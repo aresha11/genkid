@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "210439903979",
+    "project_id": "genkid-5b38b",
+    "storage_bucket": "genkid-5b38b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210439903979:android:84f8099886ae4176ef7cae",
+        "android_client_info": {
+          "package_name": "com.example.genkid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210439903979-lrk5ss81tfilu8fo4jljis6nhjka9geo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7IIJJyX6ZCuuKT9--BhMzRVdIeAjTyFk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210439903979-lrk5ss81tfilu8fo4jljis6nhjka9geo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
