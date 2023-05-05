@@ -3,7 +3,6 @@ import 'package:genkid/config/data/local/shared_preference.dart';
 import 'package:genkid/config/utility/routes.dart';
 import 'package:genkid/cubit/bottom_navigation_bar/bottom_navigation_bar_cubit.dart';
 import 'package:genkid/cubit/courses_cubit/courses_cubit.dart';
-import 'package:genkid/cubit/register_cubit/register_cubit.dart';
 import 'package:sizer/sizer.dart';
 import 'package:genkid/provider.dart';
 import 'package:provider/provider.dart';
@@ -11,6 +10,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'config/utility/router.dart';
+import 'cubit/auth/register_cubit/register_cubit.dart';
 
 
 void main() async {

@@ -5,7 +5,7 @@ import 'package:genkid/config/utility/app_strings.dart';
 import 'package:genkid/config/utility/routes.dart';
 import 'package:genkid/cubit/courses_cubit/courses_cubit.dart';
 import 'package:sizer/sizer.dart';
-import '../cubit/register_cubit/register_cubit.dart';
+import '../cubit/auth/register_cubit/register_cubit.dart';
 import '../widgets/input_field.dart';
 import '../widgets/main_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -155,7 +155,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             hint: AppStrings.phoneNumber,
                           ),
                           SizedBox(
-                            height: 2.h,
+                            height: 1.8.h,
                           ),
                           MainButton(
                             title: AppStrings.createAccount,
@@ -172,9 +172,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                Navigator.pushNamed(context, AppRoutes.homeScreenLayoutRoute);
                             },
                           ),
-                          SizedBox(
-                            height: 1.h,
-                          ),
+
                           Row(
                             children: [
                               Text(
