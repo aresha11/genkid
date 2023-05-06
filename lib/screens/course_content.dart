@@ -46,7 +46,7 @@ class _CourseContentState extends State<CourseContent> {
                         children: [
                           InkWell(
                             onTap: (){
-                              Navigator.pushNamed(context, AppRoutes.videoContent);
+                              Navigator.pushNamed(context, AppRoutes.videoContentRoute);
                             },
                             child: Container(
                               height: _w / 4,

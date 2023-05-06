@@ -11,9 +11,9 @@ class AppStrings{
  static String facebook="Facebook";
  static String email="Email";
  static String password="Password";
- static String username="Username";
+ static String retypeEmail="Retype Your Email";
  static String next="Next";
- static String phoneNumber="PhoneNumber";
+ static String fullName="Full Name";
  static String age="Age";
  static String alreadyHaveAnAccount="Already have an account?";
  static String pleaseCreateAnAccountToFindYourDream="Please create an account to find your dream";

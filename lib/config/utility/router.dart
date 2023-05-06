@@ -3,25 +3,27 @@ import 'package:genkid/config/utility/routes.dart';
 import 'package:genkid/screens/course_content.dart';
 import 'package:genkid/screens/courses.dart';
 import 'package:genkid/screens/forget_password.dart';
+import 'package:genkid/screens/games_screen.dart';
 import 'package:genkid/screens/home_layout_screen.dart';
-import 'package:genkid/screens/login_screen.dart';
 import 'package:genkid/screens/profile_screen.dart';
 import 'package:genkid/screens/quiz_screens/question_screen.dart';
 import 'package:genkid/screens/quiz_screens/quiz_splash_screen.dart';
-import 'package:genkid/screens/register_screen.dart';
+import 'package:genkid/screens/auth/register_screen.dart';
 import 'package:genkid/screens/road_map.dart';
 import 'package:genkid/screens/setting_screen.dart';
 import 'package:genkid/screens/splashScreen.dart';
 import 'package:genkid/screens/video_content.dart';
+
+import '../../screens/auth/login_screen.dart';
 
 Route<dynamic> onGenerate(RouteSettings routeSettings) {
   switch (routeSettings.name) {
     case AppRoutes.registerScreenRoute:
       return MaterialPageRoute(
           builder: (context) => const RegisterScreen(), settings: routeSettings);
-    case AppRoutes.homeScreenLayoutRoute:
+    case AppRoutes.homeLayoutScreenRoute:
       return MaterialPageRoute(
-          builder: (context) =>const HomeScreenLayout(), settings: routeSettings);
+          builder: (context) =>const HomeLayoutScreen(), settings: routeSettings);
 
     case AppRoutes.loginScreenRoute:
       return MaterialPageRoute(
@@ -35,24 +37,27 @@ Route<dynamic> onGenerate(RouteSettings routeSettings) {
       case AppRoutes.courseContentRoute:
       return MaterialPageRoute(
           builder: (context) => CourseContent(), settings: routeSettings);
-      case AppRoutes.quizSplashScreen:
+      case AppRoutes.quizSplashScreenRoute:
       return MaterialPageRoute(
           builder: (context) => const QuizSplashScreen(), settings: routeSettings);
-      case AppRoutes.roadMap:
+      case AppRoutes.roadMapRoute:
       return MaterialPageRoute(
           builder: (context) => const RoadMap(), settings: routeSettings);
-      case AppRoutes.forgetPassword:
+      case AppRoutes.forgetPasswordRoute:
       return MaterialPageRoute(
           builder: (context) => const ForgetPassword(), settings: routeSettings);
-      case AppRoutes.videoContent:
+      case AppRoutes.videoContentRoute:
       return MaterialPageRoute(
           builder: (context) =>  VideoContent(), settings: routeSettings);
-      case AppRoutes.profileScreen:
+      case AppRoutes.profileScreenRoute:
       return MaterialPageRoute(
           builder: (context) => const ProfileScreen(), settings: routeSettings);
-      case AppRoutes.settingScreen:
+      case AppRoutes.settingScreenRoute:
       return MaterialPageRoute(
           builder: (context) => const SettingScreen(), settings: routeSettings);
+      case AppRoutes.gameScreenRoute:
+      return MaterialPageRoute(
+          builder: (context) => const GamesScreen(), settings: routeSettings);
     case AppRoutes.splashScreenRoute:
     default:
       return MaterialPageRoute(

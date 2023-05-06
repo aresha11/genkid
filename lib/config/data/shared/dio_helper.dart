@@ -33,9 +33,14 @@ class DioHelper {
     ProgressCallback? onReceiveProgress,
     String? token,
   }) async {
+
+
     try {
       dio.options.headers = {
         'Content-Type': 'application/json; char=UTF-8',
+      };
+      dio.options.headers = {
+        'Authorization': 'Bearer $token',
       };
       final Response response = await dio.get(
         url,

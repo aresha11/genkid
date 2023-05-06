@@ -1,10 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:fluid_bottom_nav_bar/fluid_bottom_nav_bar.dart';
+import 'package:genkid/cubit/auth/get_user_information_cubit/get_user_information_cubit.dart';
 import '../cubit/bottom_navigation_bar/bottom_navigation_bar_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomeScreenLayout extends StatelessWidget {
-  const HomeScreenLayout({Key? key}) : super(key: key);
+class HomeLayoutScreen extends StatefulWidget {
+  const HomeLayoutScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeLayoutScreen> createState() => _HomeLayoutScreenState();
+}
+
+class _HomeLayoutScreenState extends State<HomeLayoutScreen> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    //context.read<GetUserInformationCubit>().getUserInformation();
+  }
 
   @override
   Widget build(BuildContext context) {

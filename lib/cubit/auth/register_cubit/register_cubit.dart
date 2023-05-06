@@ -1,8 +1,9 @@
 import 'dart:convert';
-
+import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:genkid/config/data/shared/dio_helper.dart';
+import 'package:genkid/config/utility/routes.dart';
 import 'package:meta/meta.dart';
 
 import 'package:http/http.dart' as http;
@@ -28,6 +29,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     required context,
 
   })async{
+    emit(RegisterLoadingState());
     String url = 'http://osama121220-001-site1.btempurl.com/api/Auth/register';
     http.Response response = await http.post(
       Uri.parse(url),
@@ -44,16 +46,24 @@ class RegisterCubit extends Cubit<RegisterState> {
         },
       ),
     ).then((value) {
-      print(value.body);
-      var body = json.decode(value.body);
-      print(body);
-      apiStatus = body['isAuthenticated'].toString();
-      if(value.statusCode==200){
-        token = body['token'].toString();
-      }
+
+      //apiStatus = body['isAuthenticated'].toString();
       print(value.statusCode);
-      print(token);
+      if(value.statusCode==200){
+        emit(RegisterSuccessState());
+        print(value.body);
+        var body = json.decode(value.body);
+        print(body);
+        //token = body['token'].toString();
+        Navigator.pushNamed(context, AppRoutes.loginScreenRoute);
+      }
+
+      //print(token);
+
       return value;
+    }).catchError((onError){
+      emit(RegisterErrorState());
+      throw onError;
     });
 
   }

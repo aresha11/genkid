@@ -1,10 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:genkid/config/utility/routes.dart';
-class Courses extends StatelessWidget {
+import 'package:genkid/cubit/courses_cubit/courses_cubit.dart';
+class Courses extends StatefulWidget {
   const Courses({Key? key}) : super(key: key);
 
   @override
+  State<Courses> createState() => _CoursesState();
+}
+
+class _CoursesState extends State<Courses> {
+  @override
+  void initState() {
+    context.read<CoursesCubit>().getAllCourses();
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    return BlocConsumer<CoursesCubit, CoursesState>(
+  listener: (context, state) {
+    // TODO: implement listener
+  },
+  builder: (context, state) {
     return Scaffold(
       body:Container(
         decoration: const BoxDecoration(
@@ -79,5 +98,7 @@ class Courses extends StatelessWidget {
         ),
       ) ,
     );
+  },
+);
   }
 }

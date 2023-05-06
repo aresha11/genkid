@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:genkid/config/data/local/shared_preference.dart';
 import 'package:genkid/config/utility/app_colores.dart';
-import 'package:genkid/screens/login_screen.dart';
-import 'package:provider/provider.dart';
+import 'package:genkid/config/utility/routes.dart';
+import 'package:genkid/screens/home_layout_screen.dart';
 import 'dart:math' as math;
 import 'dart:async';
+
+import 'auth/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -23,6 +26,8 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
+
+
 
     _controller =
         AnimationController(vsync: this, duration: Duration(seconds: 3));
@@ -51,9 +56,11 @@ class _SplashScreenState extends State<SplashScreen>
     });
 
     Timer(Duration(seconds: 4), () {
-      setState(() {
-        Navigator.pushReplacement(context, PageTransition(LoginScreen()));
-      });
+      if(SharedPreference.get(key: "login")=="true"){
+        Navigator.pushReplacement(context, PageTransition(const HomeLayoutScreen()));
+      }else {
+        Navigator.pushReplacement(context, PageTransition(const LoginScreen()));
+      }
     });
   }
 
@@ -127,7 +134,7 @@ class PageTransition extends PageRouteBuilder {
   PageTransition(this.page)
       : super(
     pageBuilder: (context, animation, anotherAnimation) => page,
-    transitionDuration: Duration(milliseconds: 2000),
+    transitionDuration: const Duration(milliseconds: 2000),
     transitionsBuilder: (context, animation, anotherAnimation, child) {
       animation = CurvedAnimation(
         curve: Curves.fastOutSlowIn,
