@@ -13,7 +13,7 @@ class CoursesCubit extends Cubit<CoursesState> {
   DioHelper dioHelper=DioHelper();
 
 
-  void  getAllJobs({index})async {
+  void  getAllCourses({index})async {
     emit(LoadingDataState());
     await dioHelper.getData(
       url:"http://osama121220-001-site1.btempurl.com/api/Playlists",

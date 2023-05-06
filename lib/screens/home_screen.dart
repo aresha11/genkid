@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
 import '../config/utility/app_images.dart';
 import '../config/utility/routes.dart';
 import '../widgets/home_container.dart';
+import 'package:sizer/sizer.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -11,11 +11,11 @@ class HomeScreen extends StatelessWidget {
     List images=[AppImages.courses,AppImages.practice,AppImages.games,AppImages.road];
     List primaryText=["Courses","Practice","Games","RoadMap"];
     List secondText=["study hard build your self","check your knowledge","15 min for fun","there are many tracks here some of them"];
-    List nextScreen=[ AppRoutes.coursesScreenRoute,AppRoutes.quizSplashScreen, AppRoutes.coursesScreenRoute, AppRoutes.roadMap,];
+    List nextScreen=[ AppRoutes.coursesScreenRoute,AppRoutes.quizSplashScreenRoute, AppRoutes.gameScreenRoute, AppRoutes.roadMapRoute,];
 
     return Stack(
       children: [
-        Container(
+        SizedBox(
           height: double.infinity,
           width: double.infinity,
           child: Image.asset(AppImages.backGround, fit: BoxFit.cover),

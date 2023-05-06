@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:genkid/config/data/local/shared_preference.dart';
 import 'package:genkid/config/utility/routes.dart';
+import 'package:genkid/cubit/auth/get_user_information_cubit/get_user_information_cubit.dart';
+import 'package:genkid/cubit/auth/login_cubit/login_cubit.dart';
 import 'package:genkid/cubit/bottom_navigation_bar/bottom_navigation_bar_cubit.dart';
 import 'package:genkid/cubit/courses_cubit/courses_cubit.dart';
 import 'package:sizer/sizer.dart';
@@ -37,10 +39,16 @@ class MyApp extends StatelessWidget {
               create: (context) => RegisterCubit(),
             ),
             BlocProvider(
+              create: (context) => LoginCubit(),
+            ),
+            BlocProvider(
+              create: (context) => GetUserInformationCubit(),
+            ),
+            BlocProvider(
               create: (context) => CoursesCubit(),
             ),
           ],
-          child: MaterialApp(
+          child: const MaterialApp(
             debugShowCheckedModeBanner: false,
             onGenerateRoute: onGenerate,
 

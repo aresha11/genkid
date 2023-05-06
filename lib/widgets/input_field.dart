@@ -37,7 +37,7 @@ class InputField extends StatefulWidget {
       this.initialValue,
       required this.onchange,
       required this.onEditingComplete,
-      this.borderColor = Colors.grey});
+      this.borderColor = Colors.red});
 
   @override
   State<InputField> createState() => _InputFieldState();
@@ -53,6 +53,7 @@ class _InputFieldState extends State<InputField> {
       elevation: 30,
       borderRadius: BorderRadius.circular(40),
       shadowColor: Colors.black.withOpacity(.5),
+      color: Colors.transparent,
       child: TextFormField(
         onEditingComplete: () => widget.onEditingComplete(),
         onChanged: (p) => widget.onchange(p),
@@ -75,6 +76,7 @@ class _InputFieldState extends State<InputField> {
           filled: true,
           fillColor: const Color(0xffF5F5FA),
           errorBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(Radius.circular(80)),
             borderSide: BorderSide(
               width: 2,
               color: widget.borderColor,

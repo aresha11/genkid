@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:genkid/cubit/auth/get_user_information_cubit/get_user_information_cubit.dart';
 import 'package:sizer/sizer.dart';
 import '../config/utility/app_images.dart';
 
@@ -7,6 +9,11 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return BlocConsumer<GetUserInformationCubit, GetUserInformationState>(
+  listener: (context, state) {
+    // TODO: implement listener
+  },
+  builder: (context, state) {
     return Container(
       height: double.infinity,
       width: double.infinity,
@@ -72,20 +79,27 @@ class ProfileScreen extends StatelessWidget {
           ),
           Positioned(
               top: 57.h,
-              left: 38.w,
-              child: Text("UserName",
+              left: 0,
+              right: 0,
+              child: Text(context.read<GetUserInformationCubit>().userInformationModel.firstName.toString()
+                  ,
                   style: TextStyle(
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w500,
-                  ))),
+                  ),
+                textAlign: TextAlign.center,
+              )),
           Positioned(
               top: 62.h,
-              left: 48.w,
+              left: 0,
+              right: 0,
               child: Text("Bio",
                   style: TextStyle(
                     fontSize: 8.sp,
                     fontWeight: FontWeight.w500,
-                  ))),
+                  ),
+                textAlign: TextAlign.center,
+              )),
           Positioned(
               top: 71.h,
               child: Container(
@@ -145,5 +159,7 @@ class ProfileScreen extends StatelessWidget {
         ],
       ),
     );
+  },
+);
   }
 }
