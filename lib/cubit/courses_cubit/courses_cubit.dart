@@ -52,8 +52,8 @@ class CoursesCubit extends Cubit<CoursesState> {
        // print(data[0].photo);
       }
     }).catchError((error) {
-      throw error;
       emit(GetDataErrorState());
+      throw error;
     });
   }
 

@@ -4,3 +4,6 @@ part of 'video_cubit.dart';
 abstract class VideoState {}
 
 class VideoInitial extends VideoState {}
+class LoadingDataState extends VideoState {}
+class GetDataSuccessState extends VideoState {}
+class GetDataFilState extends VideoState {}
