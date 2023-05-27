@@ -13,10 +13,11 @@ class _CoursesState extends State<Courses> {
   @override
   void initState() {
     context.read<CoursesCubit>().getAllCourses();
+    var data=context.read<CoursesCubit>().playlistsModel.data;
     // TODO: implement initState
     super.initState();
   }
-
+  var data;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CoursesCubit, CoursesState>(
@@ -42,7 +43,7 @@ class _CoursesState extends State<Courses> {
             ),
             Expanded(
               child: ListView.builder(
-                  itemCount: 4,
+                  itemCount: data.length,
                   itemBuilder: (context,index)=>
               InkWell(
                 onTap: (){
@@ -79,9 +80,9 @@ class _CoursesState extends State<Courses> {
                               ],
                             ),
                             Column(
-                              children: const [
-                                Text('course name',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                                Text('auther name')
+                              children:  [
+                                Text(data[index].name.toString(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                Text(data[index].autherName.toString())
                               ],
                             )
                           ],

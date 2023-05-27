@@ -32,24 +32,6 @@ class CoursesCubit extends Cubit<CoursesState> {
         emit(GetDataSuccessState());
         playlistsModel=PlaylistsModel.fromJson(json: value.data);
         print( playlistsModel.data.length);
-        // value.data.forEach((e){
-        //   playlistsModel=PlaylistsModel.fromJson(e);
-        //   print( playlistsModel.id);
-        //  // data.add(e);
-        //   //print(data[0].photo);
-        // });
-       // print(data[0]["id"]);
-      //  print(data[0].photo);
-        // try{
-        //   for(int i=0;i<=0;i++){
-        //     data.add(value.data[i]);
-        //     print(data[0].photo);
-        //   }
-        // }catch(e){
-        //   print(data[0].photo);
-        //   print(e);
-        // }
-       // print(data[0].photo);
       }
     }).catchError((error) {
       emit(GetDataErrorState());
