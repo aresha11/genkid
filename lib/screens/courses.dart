@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:genkid/config/utility/routes.dart';
 import 'package:genkid/cubit/courses_cubit/courses_cubit.dart';
+import 'package:genkid/cubit/video_cubit/video_cubit.dart';
+import 'package:genkid/screens/course_content.dart';
 class Courses extends StatefulWidget {
   const Courses({Key? key}) : super(key: key);
 
@@ -13,13 +15,13 @@ class _CoursesState extends State<Courses> {
   @override
   void initState() {
     context.read<CoursesCubit>().getAllCourses();
-    var data=context.read<CoursesCubit>().playlistsModel.data;
+
     // TODO: implement initState
     super.initState();
   }
-  var data;
   @override
   Widget build(BuildContext context) {
+    var data=context.read<CoursesCubit>().playlistsModel.data;
     return BlocConsumer<CoursesCubit, CoursesState>(
   listener: (context, state) {
     // TODO: implement listener
@@ -47,7 +49,9 @@ class _CoursesState extends State<Courses> {
                   itemBuilder: (context,index)=>
               InkWell(
                 onTap: (){
-                  Navigator.pushNamed(context, AppRoutes.courseContentRoute);
+                  //Navigator.pushNamed(context, AppRoutes.courseContentRoute);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => CourseContent(index: index),));
+                  context.read<VideoCubit>().getAllVideo();
                 },
                 child: Column(
                   children: [

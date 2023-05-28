@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:genkid/config/utility/app_images.dart';
 import 'package:genkid/config/utility/routes.dart';
+import 'package:genkid/cubit/courses_cubit/courses_cubit.dart';
+import 'package:genkid/cubit/video_cubit/video_cubit.dart';
 import 'package:sizer/sizer.dart';
 
 class CourseContent extends StatefulWidget {
+   CourseContent({Key? key,required this.index}) : super(key: key);
+  int index;
+
   @override
   _CourseContentState createState() => _CourseContentState();
 }
@@ -13,23 +19,29 @@ class _CourseContentState extends State<CourseContent> {
   Widget build(BuildContext c) {
     double _w = MediaQuery.of(context).size.width;
     double _h = MediaQuery.of(context).size.height;
+    return BlocConsumer<VideoCubit, VideoState>(
+  listener: (context, state) {
+    // TODO: implement listener
+  },
+  builder: (context, state) {
     return Scaffold(
       backgroundColor: const Color(0xff5F40D1),
       body: Stack(
         children: [
+          SizedBox(height: 2.h,),
           Container(
             alignment: Alignment.topLeft,
             height: 55.h,
             width: double.infinity,
             decoration: BoxDecoration(
               color: Colors.black,
-                image: DecorationImage(image: AssetImage(AppImages.courseContent),fit: BoxFit.cover)
+                image: DecorationImage(image: NetworkImage(context.read<CoursesCubit>().playlistsModel.data[widget.index].photo.toString()),fit: BoxFit.cover)
             ),
             child: Row(
               children: [
                 IconButton(onPressed: (){Navigator.pop(context);}, icon: const Icon(Icons.arrow_back_outlined)),
                 SizedBox(width: 23.w,),
-                const Text('course name',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                 Text(context.read<CoursesCubit>().playlistsModel.data[widget.index].name.toString(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
               ],
             ),
           ),
@@ -40,7 +52,7 @@ class _CourseContentState extends State<CourseContent> {
                 child: Container(
                   decoration: const BoxDecoration(),
                   child: ListView.builder(
-                    itemCount: 7,
+                    itemCount: context.read<VideoCubit>().videoModel.data.length,
                       itemBuilder: (context,index)=>
                       Column(
                         children: [
@@ -87,5 +99,7 @@ class _CourseContentState extends State<CourseContent> {
       ),
 
     );
+  },
+);
   }
 }

@@ -11,14 +11,26 @@ class VideoModel {
 
 class Data {
   int? id;
-  String? name;
-  String? autherName;
+  String? title;
+  int? year;
   String? photo;
+  int? rate;
+  String? storeline;
+  String? poster;
+  String? videoURL;
+  String? playlistName;
+  int? playlistId;
 
   Data.fromJson({required Map<String, dynamic> json}) {
     id = json['id'];
-    name = json['name'];
-    autherName = json['autherName'];
+    title = json['title'];
+    year = json['year'];
     photo = json['photo'];
+    rate = json['rate'];
+    storeline = json['storeline'];
+    poster = json['poster'];
+    videoURL = json['videoURL'];
+    playlistName = json['playlistName'];
+    playlistId = json['playlistId'];
   }
 }
