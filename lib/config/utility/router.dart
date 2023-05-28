@@ -57,7 +57,7 @@ Route<dynamic> onGenerate(RouteSettings routeSettings) {
           builder: (context) => const SettingScreen(), settings: routeSettings);
       case AppRoutes.gameScreenRoute:
       return MaterialPageRoute(
-          builder: (context) => const GamesScreen(), settings: routeSettings);
+          builder: (context) =>  GamesScreen(), settings: routeSettings);
     case AppRoutes.splashScreenRoute:
     default:
       return MaterialPageRoute(

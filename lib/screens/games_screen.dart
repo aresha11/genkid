@@ -13,16 +13,101 @@ class _GamesScreenState extends State<GamesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: MainButton(
-          title: "Game",
-          color: Colors.blue,
-          onPressed: () async {
-            var openAppResult = await LaunchApp.openApp(
-              androidPackageName: 'com.DilmerGamesLLC.ARRace',
-            );
-          },
-        ),
+      backgroundColor: Color(0xff266E73),
+      body: ListView(
+
+        children: [
+          SizedBox(height: 20,),
+
+          InkWell(
+            onTap: () async {
+              var openAppResult = await LaunchApp.openApp(
+                androidPackageName: 'com.DilmerGamesLLC.ARRace',
+              );
+            },
+            child:
+                Container(
+                  alignment: Alignment.bottomCenter,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('images/ar_game.jpg'),fit: BoxFit.fill
+                    )
+                  ),
+                  height: MediaQuery.of(context).size.height * 0.25,
+                  width: double.infinity,
+                  child:  Container(
+                    width: double.infinity,
+                    height: MediaQuery.of(context).size.height*0.08,
+                    decoration: BoxDecoration(
+                        color: Colors.black
+                    ),
+                    child: Center(child: Text('ar game',style: TextStyle(color: Colors.white),)),
+                  ),
+                ),
+
+          ),
+          SizedBox(height: 20,),
+          InkWell(
+            onTap: () async {
+              var openAppResult = await LaunchApp.openApp(
+                androidPackageName: 'com.DefaultCompany.Puzzle_game',
+              );
+            },
+            child:
+                Container(
+                  alignment: Alignment.bottomCenter,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('images/puzzle.webp'),fit: BoxFit.fill
+                    )
+                  ),
+                  height: MediaQuery.of(context).size.height * 0.25,
+                  width: double.infinity,
+                  child: Container(
+                    width: double.infinity,
+                    height: MediaQuery.of(context).size.height*0.08,
+                    decoration: BoxDecoration(
+                        color: Colors.black
+                    ),
+                    child: Center(child: Text('puzzle game',style: TextStyle(color: Colors.white),)),
+                  ),
+                ),
+
+          ),
+          SizedBox(height: 20,),
+
+          InkWell(
+            onTap: () async {
+              var openAppResult = await LaunchApp.openApp(
+                androidPackageName: 'com.DefaultCompany.Memory_game',
+              );
+            },
+            child:
+
+                Container(
+                  alignment: Alignment.bottomCenter,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('images/memory2.jpg'),fit: BoxFit.fill
+                    )
+                  ),
+                  height: MediaQuery.of(context).size.height * 0.25,
+                  width: double.infinity,
+                  child: Container(
+                    width: double.infinity,
+                    height: MediaQuery.of(context).size.height*0.08,
+                    decoration: BoxDecoration(
+                        color: Colors.black
+                    ),
+                    child: Center(child: Text('memory game',style: TextStyle(color: Colors.white),)),
+                  ),
+                ),
+
+
+
+          ),
+
+        ],
       ),
     );
   }

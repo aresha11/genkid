@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:genkid/config/utility/app_images.dart';
 import 'package:genkid/config/utility/routes.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
+
+import '../cubit/courses_cubit/courses_cubit.dart';
 
 class CourseContent extends StatefulWidget {
   @override
@@ -9,6 +13,14 @@ class CourseContent extends StatefulWidget {
 }
 
 class _CourseContentState extends State<CourseContent> {
+  @override
+  void initState() async{
+    data=context.read<CoursesCubit>().playlistsModel.data;
+    prefs=await SharedPreferences.getInstance() ;
+    super.initState();
+  }
+  late var data;
+ late SharedPreferences prefs;
   @override
   Widget build(BuildContext c) {
     double _w = MediaQuery.of(context).size.width;
@@ -46,6 +58,7 @@ class _CourseContentState extends State<CourseContent> {
                         children: [
                           InkWell(
                             onTap: (){
+                              prefs.setString('video', '$index');
                               Navigator.pushNamed(context, AppRoutes.videoContentRoute);
                             },
                             child: Container(
@@ -75,7 +88,41 @@ class _CourseContentState extends State<CourseContent> {
                               ),
                             ),
                           ),
-                          const Divider(height: 1,thickness: 0.2,color: Colors.black,indent: 20,endIndent: 20,)
+                          const Divider(height: 1,thickness: 0.2,color: Colors.black,indent: 20,endIndent: 20,),
+                          InkWell(
+                            onTap: (){
+                              prefs.setString('quiz', '$index');
+                              Navigator.pushNamed(context, AppRoutes.questionScreenRoute);
+                            },
+                            child: Container(
+                              height: _w / 4,
+                              decoration: BoxDecoration(
+                                color: const Color(0xff5F40D1),
+                                borderRadius:(index==0)? const BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25)):BorderRadius.zero,
+
+                              ),
+                              child: Row(
+                                children: [
+                                  const SizedBox(width: 15,),
+                                  CircleAvatar(
+                                      radius: 25,
+                                      backgroundColor: Colors.white.withOpacity(0.3),
+                                      child: const Icon(Icons.quiz,size: 38,)),
+                                  const SizedBox(width: 15,),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text('Quiz ${index+1}',style: const TextStyle(color: Colors.white)),
+                                      const Text('quiz name',style: TextStyle(color: Colors.white,fontSize: 18)),
+                                      const Text('you must sucseed to continue',style: TextStyle(color: Colors.white))
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          const Divider(height: 1,thickness: 0.2,color: Colors.black,indent: 20,endIndent: 20,),
+
                         ],
                       )),
                 ),
