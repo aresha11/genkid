@@ -30,7 +30,7 @@ Route<dynamic> onGenerate(RouteSettings routeSettings) {
           builder: (context) =>const LoginScreen(), settings: routeSettings);
       case AppRoutes.questionScreenRoute:
       return MaterialPageRoute(
-          builder: (context) =>const QuestionScreen(), settings: routeSettings);
+          builder: (context) => QuestionScreen(), settings: routeSettings);
       case AppRoutes.coursesScreenRoute:
       return MaterialPageRoute(
           builder: (context) =>const Courses(), settings: routeSettings);

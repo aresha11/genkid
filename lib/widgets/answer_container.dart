@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:genkid/cubit/Quizs_cubit/quizs_cubit.dart';
 import 'package:sizer/sizer.dart';
 
 class AnswerContainer extends StatefulWidget {
-  AnswerContainer({Key? key, required this.index}) : super(key: key);
+  AnswerContainer({Key? key, required this.index,required this.answers,required this.correct}) : super(key: key);
 
   int index;
+  String answers;
+  String correct;
   Color secondContainerColor = const Color(0xff7F5BFF);
   Color firstContainerColor = const Color(0xff4624C2);
 
@@ -19,7 +23,7 @@ class _AnswerContainerState extends State<AnswerContainer> {
       children: [
         InkWell(
           onTap: () {
-            if(widget.index == 2){
+            if(widget.answers== widget.correct){
               widget.firstContainerColor = const Color(0xff0B953A);
               widget.secondContainerColor = const Color(0xff24C22B);
             }else{
@@ -27,7 +31,16 @@ class _AnswerContainerState extends State<AnswerContainer> {
               widget.secondContainerColor=const Color(0xffC61313);
             }
 
-                
+            Future.delayed(Duration(milliseconds: 800),() {
+              context.read<QuizsCubit>().changeIndex();
+              widget. secondContainerColor = const Color(0xff7F5BFF);
+              widget.  firstContainerColor = const Color(0xff4624C2);
+              setState(() {
+
+              });
+            },);
+
+
             setState(() {});
           },
           child: Container(
@@ -42,7 +55,7 @@ class _AnswerContainerState extends State<AnswerContainer> {
               //color: widget.containerColor,
               borderRadius: BorderRadius.circular(20),
             ),
-            child: const Text("Answer"),
+            child:  Text(widget.answers),
           ),
         ),
         SizedBox(

@@ -18,7 +18,7 @@ class GetUserInformationCubit extends Cubit<GetUserInformationState> {
   void  getUserInformation()async {
     emit(LoadingDataState());
     await dioHelper.getData(
-      url:"http://osama121220-001-site1.btempurl.com/api/Auth/GetUserInfo",
+      url:"http://aresha11-001-site1.ftempurl.com/api/Auth/GetUserInfo",
       token: SharedPreference.get(key: "token")
     ).then((value) {
       if (value.statusCode ==200) {

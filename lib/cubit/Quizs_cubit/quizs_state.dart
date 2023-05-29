@@ -10,6 +10,7 @@ class QuizsInitial extends QuizsState {}
 class LoadingQuizState extends QuizsState {}
 class GetQuizSuccessState extends QuizsState {}
 class GetQuizFilState extends QuizsState {}
+class ChangeIndexSuccessState extends QuizsState {}
 
 
 /// Subgroups

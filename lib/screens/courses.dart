@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:genkid/config/utility/routes.dart';
 import 'package:genkid/cubit/courses_cubit/courses_cubit.dart';
 import 'package:genkid/cubit/video_cubit/video_cubit.dart';
 import 'package:genkid/screens/course_content.dart';
@@ -14,8 +13,6 @@ class Courses extends StatefulWidget {
 class _CoursesState extends State<Courses> {
   @override
   void initState() {
-    context.read<CoursesCubit>().getAllCourses();
-
     // TODO: implement initState
     super.initState();
   }
@@ -32,7 +29,7 @@ class _CoursesState extends State<Courses> {
         decoration: const BoxDecoration(
           image: DecorationImage(image: AssetImage('images/bg.jpeg'),fit: BoxFit.fill)
         ),
-        child: Column(
+        child:  Column(
           children: [
             const SizedBox(height: 30,),
             Padding(
@@ -85,7 +82,7 @@ class _CoursesState extends State<Courses> {
                             ),
                             Column(
                               children:  [
-                                Text(data[index].name.toString(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                Text(data[index].name.toString(),style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                                 Text(data[index].autherName.toString())
                               ],
                             )

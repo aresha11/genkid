@@ -22,12 +22,33 @@ class QuizsCubit extends Cubit<QuizsState> {
 
   QuestionsModel questionsModel=QuestionsModel();
 
+  int index=0;
+
+  bool quizFinish=false;
+
+changeIndex(){
+  if(index<questionsModel.data.length-1){
+    index=index+1;
+    emit(ChangeIndexSuccessState());
+  }else{
+    quizFinish=true;
+  }
+}
+
+  // final FlutterTts flutterTts=FlutterTts();
+  //
+  // speech(text)async{
+  //   await flutterTts.setLanguage("en-US");
+  //   await flutterTts.setPitch(1);
+  //   await flutterTts.speak(text);
+  //
+  // }
 
   void  getAllQuizs()async {
     //data.clear();
     emit(LoadingQuizState());
     await dioHelper.getData(
-      url: "http://osama121220-001-site1.btempurl.com/api/Quizs",
+      url: "http://aresha11-001-site1.ftempurl.com/api/Quizs",
     ).then((value) {
       if (value.statusCode == 200) {
         emit(GetQuizSuccessState());
@@ -46,7 +67,7 @@ class QuizsCubit extends Cubit<QuizsState> {
     //data.clear();
     emit(LoadingSubgroupsState());
     await dioHelper.getData(
-      url: "http://osama121220-001-site1.btempurl.com/api/Subgroups",
+      url: "http://aresha11-001-site1.ftempurl.com/api/Subgroups",
     ).then((value) {
       if (value.statusCode == 200) {
         emit(GetSubgroupsSuccessState());
@@ -65,7 +86,7 @@ class QuizsCubit extends Cubit<QuizsState> {
     //data.clear();
     emit(LoadingQuestionsState());
     await dioHelper.getData(
-      url: "http://osama121220-001-site1.btempurl.com/api/Questions",
+      url: "http://aresha11-001-site1.ftempurl.com/api/Questions",
     ).then((value) {
       if (value.statusCode == 200) {
         emit(GetQuestionsSuccessState());

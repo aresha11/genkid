@@ -4,6 +4,6 @@ part of 'courses_cubit.dart';
 abstract class CoursesState {}
 
 class CoursesInitial extends CoursesState {}
-class LoadingDataState extends CoursesState {}
+class LoadingCoursesState extends CoursesState {}
 class GetDataSuccessState extends CoursesState {}
 class GetDataErrorState extends CoursesState {}

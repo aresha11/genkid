@@ -20,9 +20,9 @@ class CoursesCubit extends Cubit<CoursesState> {
 
   void  getAllCourses()async {
     //data.clear();
-    emit(LoadingDataState());
+    emit(LoadingCoursesState());
     await dioHelper.getData(
-      url:"http://osama121220-001-site1.btempurl.com/api/Playlists",
+      url:"http://aresha11-001-site1.ftempurl.com/api/Playlists",
 
     ).then((value) {
       if (value.statusCode ==200) {
