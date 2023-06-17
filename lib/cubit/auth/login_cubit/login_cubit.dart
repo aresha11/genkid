@@ -18,7 +18,7 @@ class LoginCubit extends Cubit<LoginState> {
       required context}) async {
     emit(LoginLoadingState());
     var apiStatus = 'false';
-    String url = 'http://osama121220-001-site1.btempurl.com/api/Auth/token';
+    String url = 'http://aresha11-001-site1.ftempurl.com/api/Auth/token';
     http.Response response = await http
         .post(Uri.parse(url),
             headers: <String, String>{

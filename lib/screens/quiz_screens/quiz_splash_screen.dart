@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:genkid/config/utility/app_images.dart';
 import 'package:genkid/config/utility/routes.dart';
 import 'package:sizer/sizer.dart';
+
+import '../../cubit/Quizs_cubit/quizs_cubit.dart';
 
 class QuizSplashScreen extends StatelessWidget {
   const QuizSplashScreen({Key? key}) : super(key: key);
@@ -37,7 +40,8 @@ class QuizSplashScreen extends StatelessWidget {
                   child: IconButton(
                     icon: const Icon(Icons.arrow_forward_ios_outlined),
                     onPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.questionScreenRoute);
+                   //   context.read<QuizsCubit>().getAllQuestions();
+                      Navigator.pushReplacementNamed(context, AppRoutes.questionScreenRoute);
                     },
 
             ),

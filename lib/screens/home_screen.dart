@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../config/data/local/shared_preference.dart';
 import '../config/utility/app_images.dart';
 import '../config/utility/routes.dart';
 import '../widgets/home_container.dart';
@@ -24,7 +25,10 @@ class HomeScreen extends StatelessWidget {
           top: 5.h,
           child: Row(
             children: [
-              IconButton(onPressed: () {},
+              IconButton(onPressed: () {
+                SharedPreference.put(key: "login", value: "false");
+                Navigator.pushNamed(context, AppRoutes.splashScreenRoute);
+              },
                   icon: const Icon(Icons.arrow_back_ios_outlined),color: Colors.black),
               const Text("LogOut",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w700,fontSize: 20),),
             ],

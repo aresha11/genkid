@@ -7,6 +7,7 @@ import 'package:genkid/cubit/auth/login_cubit/login_cubit.dart';
 import 'package:genkid/widgets/input_field.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../cubit/courses_cubit/courses_cubit.dart';
 import '../../widgets/main_button.dart';
 
 class LoginScreen extends StatefulWidget {

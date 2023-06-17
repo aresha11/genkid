@@ -13,7 +13,7 @@ class _CoursesState extends State<Courses> {
   @override
   void initState() {
     context.read<CoursesCubit>().getAllCourses();
-     data=context.read<CoursesCubit>().playlistsModel.data;
+    var data=context.read<CoursesCubit>().playlistsModel.data;
     // TODO: implement initState
     super.initState();
   }

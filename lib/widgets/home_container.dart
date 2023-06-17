@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:genkid/config/utility/routes.dart';
+import 'package:genkid/cubit/Quizs_cubit/quizs_cubit.dart';
 import 'package:sizer/sizer.dart';
 
 import '../config/utility/app_images.dart';
@@ -16,6 +19,9 @@ class HomeContainer extends StatelessWidget {
     return InkWell(
       onTap:(){
         Navigator.pushNamed(context,nextScreen );
+        if(nextScreen==AppRoutes.quizSplashScreenRoute){
+          context.read<QuizsCubit>().getAllQuestions();
+        }
       } ,
       child: Container(
         child: Stack(
