@@ -57,7 +57,7 @@ Route<dynamic> onGenerate(RouteSettings routeSettings) {
           builder: (context) => const SettingScreen(), settings: routeSettings);
       case AppRoutes.courseContentRoute:
       return MaterialPageRoute(
-          builder: (context) => const SettingScreen(), settings: routeSettings);
+          builder: (context) =>  CourseContent(), settings: routeSettings);
       case AppRoutes.gameScreenRoute:
       return MaterialPageRoute(
           builder: (context) =>  GamesScreen(), settings: routeSettings);

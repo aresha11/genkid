@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:genkid/config/data/local/shared_preference.dart';
 import 'package:genkid/config/utility/app_images.dart';
 import 'package:genkid/config/utility/routes.dart';
 import 'package:genkid/cubit/courses_cubit/courses_cubit.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:sizer/sizer.dart';
 
 class CourseContent extends StatefulWidget {
@@ -16,15 +17,14 @@ class _CourseContentState extends State<CourseContent> {
   void initState()async {
 
      data=context.read<CoursesCubit>().CorseContentModel.data;
-     prefs=await SharedPreferences.getInstance();
-     if(prefs!.getInt('video')!=null){
-       video=prefs!.getInt('video');
+     if(SharedPreference.get(key: 'video')!=null){
+       video=SharedPreference.get(key: 'video');
      }
     super.initState();
   }
 
   var data;
-  SharedPreferences? prefs;
+  //SharedPreferences? prefs;
   int? video;
   @override
   Widget build(BuildContext c) {
@@ -67,10 +67,10 @@ class _CourseContentState extends State<CourseContent> {
                         itemBuilder: (context,index)=>
                         Column(
                           children: [
-                            (index==0||video!>=(index+1))?
+                            (index==0||video!>=(index-1))?
                             InkWell(
                               onTap: (){
-                                prefs!.setInt('video', index);
+                                SharedPreference.put(key: 'video', value: index);
                                 context.read<CoursesCubit>().currentVideo=data['videoURL'][index];
                                 Navigator.pushNamed(context, AppRoutes.videoContentRoute);
                               },

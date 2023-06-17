@@ -13,13 +13,11 @@ class _CoursesState extends State<Courses> {
   @override
   void initState() {
     context.read<CoursesCubit>().getAllCourses();
-    var data=context.read<CoursesCubit>().playlistsModel.data;
-    // TODO: implement initState
     super.initState();
   }
-  var data;
   @override
   Widget build(BuildContext context) {
+    var data=context.read<CoursesCubit>().playlistsModel.data;
     return BlocConsumer<CoursesCubit, CoursesState>(
   listener: (context, state) {
     // TODO: implement listener
