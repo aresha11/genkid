@@ -46,7 +46,8 @@ class _CoursesState extends State<Courses> {
                   itemCount: data.length,
                   itemBuilder: (context,index)=>
               InkWell(
-                onTap: (){
+                onTap: ()async{
+                  await context.read<CoursesCubit>().getCourseById();
                   Navigator.pushNamed(context, AppRoutes.courseContentRoute);
                 },
                 child: Column(

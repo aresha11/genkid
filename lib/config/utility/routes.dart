@@ -7,7 +7,7 @@ class AppRoutes{
   static const String profileScreenRoute     ="ProfileScreen";
   static const String settingScreenRoute     ="SettingScreen";
   static const String coursesScreenRoute     ="CoursesScreen";
-  //static const String courseContentRoute     ="CourseContent";
+  static const String courseContentRoute     ="CourseContent";
   static const String questionScreenRoute     ="QuestionScreen";
   static const String quizSplashScreenRoute     ="QuizSplashScreen";
   static const String roadMapRoute     ="RoadMap";
