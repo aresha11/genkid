@@ -20,7 +20,7 @@ class CoursesCubit extends Cubit<CoursesState> {
   DioHelper dioHelper=DioHelper();
 
   PlaylistsModel playlistsModel=PlaylistsModel();
-  CourseContentModel CorseContentModel=CourseContentModel();
+  CourseContentModel corseContentModel=CourseContentModel();
 
   List<PlaylistsModel> data=[];
 
@@ -52,7 +52,7 @@ class CoursesCubit extends Cubit<CoursesState> {
     ).then((value) {
       if (value.statusCode ==200) {
         emit(GetDataSuccessState());
-        CorseContentModel=CourseContentModel.fromJson(json: value.data);
+        corseContentModel=CourseContentModel.fromJson(json: value.data);
 
       }
     }).catchError((error) {

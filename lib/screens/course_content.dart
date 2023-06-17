@@ -14,11 +14,11 @@ class CourseContent extends StatefulWidget {
 
 class _CourseContentState extends State<CourseContent> {
   @override
-  void initState()async {
+  void initState() {
 
-     data=context.read<CoursesCubit>().CorseContentModel.data;
+
      if(SharedPreference.get(key: 'video')!=null){
-       video=SharedPreference.get(key: 'video');
+
      }
     super.initState();
   }
@@ -27,7 +27,9 @@ class _CourseContentState extends State<CourseContent> {
   //SharedPreferences? prefs;
   int? video;
   @override
-  Widget build(BuildContext c) {
+  Widget build(BuildContext context) {
+    video=SharedPreference.get(key: 'video').toString()=="null"?0:SharedPreference.get(key: 'video');
+    data=context.read<CoursesCubit>().corseContentModel.data;
     double _w = MediaQuery.of(context).size.width;
     double _h = MediaQuery.of(context).size.height;
 
@@ -52,7 +54,7 @@ class _CourseContentState extends State<CourseContent> {
                 children: [
                   IconButton(onPressed: (){Navigator.pop(context);}, icon: const Icon(Icons.arrow_back_outlined)),
                   SizedBox(width: 23.w,),
-                   Text('${data['playlistName'][0]}',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                   Text('${context.read<CoursesCubit>().playlistsModel.data[0].name}',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                 ],
               ),
             ),
@@ -70,8 +72,9 @@ class _CourseContentState extends State<CourseContent> {
                             (index==0||video!>=(index-1))?
                             InkWell(
                               onTap: (){
+                                print(video);
                                 SharedPreference.put(key: 'video', value: index);
-                                context.read<CoursesCubit>().currentVideo=data['videoURL'][index];
+                                context.read<CoursesCubit>().currentVideo=context.read<CoursesCubit>().corseContentModel.data[index].video;
                                 Navigator.pushNamed(context, AppRoutes.videoContentRoute);
                               },
                               child: Container(
@@ -93,8 +96,8 @@ class _CourseContentState extends State<CourseContent> {
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         Text('video ${index+1}',style: const TextStyle(color: Colors.white)),
-                                         Text('${data['title'][index]}',style: TextStyle(color: Colors.white,fontSize: 18)),
-                                         Text('${data['playlistName'][0]}',style: TextStyle(color: Colors.white))
+                                         Text('${context.read<CoursesCubit>().corseContentModel.data[index].title}',style: TextStyle(color: Colors.white,fontSize: 18)),
+                                         Text('${context.read<CoursesCubit>().corseContentModel.data[index].autherName}',style: TextStyle(color: Colors.white))
                                       ],
                                     ),
                                   ],
@@ -120,8 +123,8 @@ class _CourseContentState extends State<CourseContent> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text('video ${index+1}',style: const TextStyle(color: Colors.white)),
-                                      Text('${data['title'][index]}',style: TextStyle(color: Colors.white,fontSize: 18)),
-                                      Text('${data['playlistName'][0]}',style: TextStyle(color: Colors.white))
+                                      Text('${context.read<CoursesCubit>().corseContentModel.data[index].title}',style: TextStyle(color: Colors.white,fontSize: 18)),
+                                      Text('${context.read<CoursesCubit>().corseContentModel.data[index].autherName}',style: TextStyle(color: Colors.white))
                                     ],
                                   ),
                                 ],
