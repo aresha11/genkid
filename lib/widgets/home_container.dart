@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:genkid/config/utility/routes.dart';
 import 'package:genkid/cubit/Quizs_cubit/quizs_cubit.dart';
+import 'package:genkid/cubit/courses_cubit/courses_cubit.dart';
 import 'package:sizer/sizer.dart';
 
 import '../config/utility/app_images.dart';
@@ -21,8 +22,11 @@ class HomeContainer extends StatelessWidget {
         Navigator.pushNamed(context,nextScreen );
         if(nextScreen==AppRoutes.quizSplashScreenRoute){
           context.read<QuizsCubit>().getAllQuestions();
+          if(nextScreen==AppRoutes.coursesScreenRoute){
+          context.read<CoursesCubit>().getCourseById();
+          context.read<CoursesCubit>().getAllCourses();
         }
-      } ,
+      } },
       child: Container(
         child: Stack(
           children: [

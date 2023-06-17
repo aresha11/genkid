@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:genkid/config/utility/app_images.dart';
 import 'package:genkid/config/utility/routes.dart';
 import 'package:genkid/cubit/courses_cubit/courses_cubit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 
 class CourseContent extends StatefulWidget {
@@ -12,13 +13,19 @@ class CourseContent extends StatefulWidget {
 
 class _CourseContentState extends State<CourseContent> {
   @override
-  void initState() {
+  void initState()async {
 
      data=context.read<CoursesCubit>().CorseContentModel.data;
+     prefs=await SharedPreferences.getInstance();
+     if(prefs!.getInt('video')!=null){
+       video=prefs!.getInt('video');
+     }
     super.initState();
   }
 
   var data;
+  SharedPreferences? prefs;
+  int? video;
   @override
   Widget build(BuildContext c) {
     double _w = MediaQuery.of(context).size.width;
@@ -60,8 +67,10 @@ class _CourseContentState extends State<CourseContent> {
                         itemBuilder: (context,index)=>
                         Column(
                           children: [
+                            (index==0||video!>=(index+1))?
                             InkWell(
                               onTap: (){
+                                prefs!.setInt('video', index);
                                 context.read<CoursesCubit>().currentVideo=data['videoURL'][index];
                                 Navigator.pushNamed(context, AppRoutes.videoContentRoute);
                               },
@@ -90,6 +99,32 @@ class _CourseContentState extends State<CourseContent> {
                                     ),
                                   ],
                                 ),
+                              ),
+                            ):
+                            Container(
+                              height: _w / 4,
+                              decoration: BoxDecoration(
+                                color:  Colors.grey,
+                                borderRadius:(index==0)? const BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25)):BorderRadius.zero,
+
+                              ),
+                              child: Row(
+                                children: [
+                                  const SizedBox(width: 15,),
+                                  CircleAvatar(
+                                      radius: 25,
+                                      backgroundColor: Colors.white.withOpacity(0.3),
+                                      child: const Icon(Icons.play_circle_fill_outlined,size: 38,)),
+                                  const SizedBox(width: 15,),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text('video ${index+1}',style: const TextStyle(color: Colors.white)),
+                                      Text('${data['title'][index]}',style: TextStyle(color: Colors.white,fontSize: 18)),
+                                      Text('${data['playlistName'][0]}',style: TextStyle(color: Colors.white))
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
                             const Divider(height: 1,thickness: 0.2,color: Colors.black,indent: 20,endIndent: 20,)
