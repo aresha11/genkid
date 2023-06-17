@@ -1,8 +1,5 @@
-import 'dart:convert';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
-import 'package:genkid/config/data/local/shared_preference.dart';
 import 'package:genkid/config/data/shared/dio_helper.dart';
 import 'package:meta/meta.dart';
 
@@ -23,15 +20,16 @@ class CoursesCubit extends Cubit<CoursesState> {
 
   void  getAllCourses()async {
     //data.clear();
-    emit(LoadingDataState());
+    emit(LoadingCoursesState());
     await dioHelper.getData(
-      url:"http://osama121220-001-site1.btempurl.com/api/Playlists",
+      url:"http://aresha11-001-site1.ftempurl.com/api/Playlists",
 
     ).then((value) {
       if (value.statusCode ==200) {
         emit(GetDataSuccessState());
         playlistsModel=PlaylistsModel.fromJson(json: value.data);
-        print( playlistsModel.data.length);
+        print(playlistsModel.data.length);
+        print(playlistsModel.data[0].photo);
       }
     }).catchError((error) {
       emit(GetDataErrorState());

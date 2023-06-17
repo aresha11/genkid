@@ -30,7 +30,7 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   })async{
     emit(RegisterLoadingState());
-    String url = 'http://osama121220-001-site1.btempurl.com/api/Auth/register';
+    String url = 'http://aresha11-001-site1.ftempurl.com/api/Auth/register';
     http.Response response = await http.post(
       Uri.parse(url),
       headers: <String, String>{
