@@ -47,7 +47,7 @@ class _MainButtonState extends State<MainButton> {
         height: 35.sp,
         minWidth:double.infinity,
         onPressed: widget.onPressed,
-        child: Text("${widget.title}",style: TextStyle(color: Colors.white),),
+        child: Text("${widget.title}",style:  TextStyle(color: widget.color),),
 
       ),
     );

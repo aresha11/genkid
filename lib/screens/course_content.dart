@@ -8,18 +8,18 @@ import 'package:genkid/cubit/courses_cubit/courses_cubit.dart';
 import 'package:sizer/sizer.dart';
 
 class CourseContent extends StatefulWidget {
+  CourseContent({ required this.index});
+
+  int index;
   @override
   _CourseContentState createState() => _CourseContentState();
+
 }
 
 class _CourseContentState extends State<CourseContent> {
   @override
   void initState() {
 
-
-     if(SharedPreference.get(key: 'video')!=null){
-
-     }
     super.initState();
   }
 
@@ -54,7 +54,7 @@ class _CourseContentState extends State<CourseContent> {
                 children: [
                   IconButton(onPressed: (){Navigator.pop(context);}, icon: const Icon(Icons.arrow_back_outlined)),
                   SizedBox(width: 23.w,),
-                   Text('${context.read<CoursesCubit>().playlistsModel.data[0].name}',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                   Text('${context.read<CoursesCubit>().playlistsModel.data[widget.index].name}',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                 ],
               ),
             ),
@@ -69,7 +69,7 @@ class _CourseContentState extends State<CourseContent> {
                         itemBuilder: (context,index)=>
                         Column(
                           children: [
-                            (index==0||video!>=(index-1))?
+                            (index==0||SharedPreference.get(key: "videoId").toString()=="null"?index==0:index<=SharedPreference.get(key: "videoId"))?
                             InkWell(
                               onTap: (){
                                 print(video);
@@ -97,7 +97,7 @@ class _CourseContentState extends State<CourseContent> {
                                       children: [
                                         Text('video ${index+1}',style: const TextStyle(color: Colors.white)),
                                          Text('${context.read<CoursesCubit>().corseContentModel.data[index].title}',style: TextStyle(color: Colors.white,fontSize: 18)),
-                                         Text('${context.read<CoursesCubit>().corseContentModel.data[index].autherName}',style: TextStyle(color: Colors.white))
+                                       //  Text('${context.read<CoursesCubit>().corseContentModel.data[index].autherName}',style: TextStyle(color: Colors.white))
                                       ],
                                     ),
                                   ],
@@ -124,7 +124,7 @@ class _CourseContentState extends State<CourseContent> {
                                     children: [
                                       Text('video ${index+1}',style: const TextStyle(color: Colors.white)),
                                       Text('${context.read<CoursesCubit>().corseContentModel.data[index].title}',style: TextStyle(color: Colors.white,fontSize: 18)),
-                                      Text('${context.read<CoursesCubit>().corseContentModel.data[index].autherName}',style: TextStyle(color: Colors.white))
+                                      //Text('${context.read<CoursesCubit>().corseContentModel.data[index].autherName}',style: TextStyle(color: Colors.white))
                                     ],
                                   ),
                                 ],

@@ -43,11 +43,11 @@ class CoursesCubit extends Cubit<CoursesState> {
       throw error;
     });
   }
-    getCourseById()async {
+    getCourseById({required String playListId})async {
     //data.clear();
     emit(LoadingCoursesState());
     await dioHelper.getData(
-      url:"http://aresha11-001-site1.ftempurl.com/api/Videos",
+      url:"http://aresha11-001-site1.ftempurl.com/api/Videos/GetByPlaylistID/$playListId",
 
     ).then((value) {
       if (value.statusCode ==200) {

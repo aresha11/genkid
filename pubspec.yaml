@@ -48,6 +48,11 @@ dependencies:
   flutter_staggered_animations:
   external_app_launcher:
   dot_navigation_bar:
+  text_to_speech: ^0.2.3
+  youtube_player_flutter: ^8.0.0-nullsafety.0
+  emoji_rating_bar: ^0.0.2
+  dialogs: ^0.0.7
+  flutter_animated_dialog: ^2.0.1
 
 
   # The following adds the Cupertino Icons font to your application.

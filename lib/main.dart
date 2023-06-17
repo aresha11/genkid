@@ -6,9 +6,7 @@ import 'package:genkid/cubit/auth/login_cubit/login_cubit.dart';
 import 'package:genkid/cubit/bottom_navigation_bar/bottom_navigation_bar_cubit.dart';
 import 'package:genkid/cubit/courses_cubit/courses_cubit.dart';
 import 'package:genkid/cubit/quesitions_cubit/quesitions_cubit.dart';
-import 'package:genkid/cubit/video_cubit/video_cubit.dart';
 import 'package:sizer/sizer.dart';
-import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -45,9 +43,6 @@ class MyApp extends StatelessWidget {
             ),
             BlocProvider(
               create: (context) => CoursesCubit()..getAllCourses(),
-            ),
-            BlocProvider(
-              create: (context) => VideoCubit(),
             ),
             BlocProvider(
               create: (context) => QuesitionsCubit(),

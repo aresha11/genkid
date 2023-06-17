@@ -23,7 +23,7 @@ class HomeContainer extends StatelessWidget {
         if(nextScreen==AppRoutes.quizSplashScreenRoute){
           context.read<QuizsCubit>().getAllQuestions();
           if(nextScreen==AppRoutes.coursesScreenRoute){
-          context.read<CoursesCubit>().getCourseById();
+          //context.read<CoursesCubit>().getCourseById();
           context.read<CoursesCubit>().getAllCourses();
         }
       } },

@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:genkid/config/data/local/shared_preference.dart';
 import 'package:genkid/config/utility/app_images.dart';
+import 'package:genkid/config/utility/routes.dart';
 import 'package:genkid/cubit/Quizs_cubit/quizs_cubit.dart';
 import 'package:genkid/widgets/answer_container.dart';
+import 'package:genkid/widgets/main_button.dart';
 import 'package:sizer/sizer.dart';
+import 'package:text_to_speech/text_to_speech.dart';
 
 class QuestionScreen extends StatelessWidget {
    QuestionScreen({Key? key}) : super(key: key);
+   TextToSpeech tts = TextToSpeech();
 
-   // final FlutterTts flutterTts=FlutterTts();
-   //
-   // speech(text)async{
-   //   await flutterTts.setLanguage("en");
-   //   await flutterTts.setPitch(1);
-   //   await flutterTts.speak(text);
-   //
-   // }
+   void speak({required String question}) {
+     tts.setVolume(1);
+     tts.setRate(1);
+     // if (languageCode != null) {
+     //   tts.setLanguage(languageCode!);
+     // }
+     tts.setLanguage("en");
+     tts.setPitch(1);
+     tts.speak(question);
+   }
   @override
   Widget build(BuildContext context) {
 
@@ -24,14 +31,50 @@ class QuestionScreen extends StatelessWidget {
     // TODO: implement listener
   },
   builder: (context, state) {
+
     List<String>? answers= [
-      "${ context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].option1}",
-      "${context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].option2}",
-      "${ context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].option3}",
-      "${context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].option4}"
+      "${SharedPreference.get(key: "quizId").toString()!="null"? context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].option1:""}",
+      "${SharedPreference.get(key: "quizId").toString()!="null"?context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].option2:""}",
+      "${ SharedPreference.get(key: "quizId").toString()!="null"?context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].option3:""}",
+      "${SharedPreference.get(key: "quizId").toString()!="null"?context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].option4:""}"
     ];
     return Scaffold(
-      body: Stack(
+      body: SharedPreference.get(key: "quizId").toString()=="null"?
+        Stack(
+          children: [
+            Container(
+              width: double.infinity,
+              height: double.infinity,
+              child: Image.asset(
+                AppImages.backGround,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                 Center(
+                  child:Text(SharedPreference.get(key: "next").toString()=="null"?"Start Your Course":"Watch Next Video",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 22,color: Colors.black),),
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                MainButton(
+                  color:Colors.white ,
+                  onPressed: (){
+                    Navigator.pushReplacementNamed(context, AppRoutes.coursesScreenRoute);
+                  },
+                  title: "Courses",
+                )
+              ],
+      ),
+       ),
+          ],
+        )
+      :Stack(
         children: [
           Container(
             width: double.infinity,
@@ -65,14 +108,14 @@ class QuestionScreen extends StatelessWidget {
                             ),
                           ] ,
                           borderRadius: BorderRadius.circular(30),
-                          border: Border.all(color: const Color(0xff7F5BFF), width: 1.3,strokeAlign:StrokeAlign.outside )),
+                          border: Border.all(color: const Color(0xff7F5BFF), width: 1.3,strokeAlign:BorderSide.strokeAlignOutside)),
                       child:  Text("${state is LoadingQuestionsState?"": context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].questione}"),
                     ),
                     Positioned(
-                      bottom: 4.h,
-                      right: 4.w,
+                      bottom: 1.h,
+                      right: 1.w,
                       child: IconButton(onPressed: (){
-                       // speech("hello");
+                        speak(question: context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].questione.toString());
                       }, icon: Icon(Icons.mic_none)),
                     )
                   ],

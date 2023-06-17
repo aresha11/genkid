@@ -1,6 +1,3 @@
-
-
-
 class CourseContentModel {
   var data = <Data>[];
   CourseContentModel();

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:genkid/config/data/local/shared_preference.dart';
 import 'package:genkid/config/utility/app_images.dart';
+import 'package:genkid/config/utility/routes.dart';
+import 'package:genkid/screens/settings_screens/rate_screen.dart';
 import 'package:sizer/sizer.dart';
-
 import '../widgets/primary_text.dart';
 import '../widgets/setting_row.dart';
 class SettingScreen extends StatelessWidget {
@@ -17,6 +20,7 @@ class SettingScreen extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(height: 2.h,),
             Container(
               padding: const EdgeInsets.only(left: 20),
               alignment: Alignment.centerLeft,
@@ -42,8 +46,10 @@ class SettingScreen extends StatelessWidget {
                     thickness: 2, color: Colors.grey,),
                   SizedBox(height: 2.h,),
                   ProfileRow(prefixIcon: Icons.photo,
-                      title: "Portfolio",
-                      onPress: () {}),
+                      title: "Rate",
+                      onPress: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const RateScreen(),));
+                      }),
                   SizedBox(height: 2.h,),
                   const Divider(
                     thickness: 2,),
@@ -108,6 +114,56 @@ class SettingScreen extends StatelessWidget {
                   SizedBox(height: 1.h,),
                   ProfileRow(title: "privacyPolicy",
                     onPress: () {},
+                    needSuffix: false,),
+                  SizedBox(height: 1.h,),
+                  const Divider(
+                    thickness: 2,),
+                  SizedBox(height: 1.h,),
+                  ProfileRow(title: "LogOut",
+                    onPress: () {
+                      showAnimatedDialog(
+                        context: context,
+                        barrierDismissible: true,
+                        builder: (BuildContext context) {
+                          return ClassicGeneralDialogWidget(
+                            titleText: 'Logout',
+                            contentText: 'Are You Sure',
+                            actions: [
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                    "Cancel",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 15.sp,
+                                        color:
+                                        Theme.of(context).colorScheme.primary),
+                                  )),
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pushNamedAndRemoveUntil(context, AppRoutes.splashScreenRoute, (route) => false);
+                                    SharedPreference.put(key: "login", value: "false");
+                                    SharedPreference.clearData();
+                                  },
+                                  child: Text(
+                                    "Confirm",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 15.sp,
+                                        color:
+                                        Theme.of(context).colorScheme.primary),
+                                  ))
+                            ],
+
+                          );
+                        },
+                        animationType: DialogTransitionType.size,
+                        curve: Curves.fastOutSlowIn,
+                        duration: const Duration(seconds: 1),
+                      );
+                    },
                     needSuffix: false,),
                   SizedBox(height: 1.h,),
                   const Divider(

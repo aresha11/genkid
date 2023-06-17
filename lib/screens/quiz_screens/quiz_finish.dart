@@ -4,9 +4,14 @@ class QuizFinish extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
+    return   Scaffold(
+      body: Column(
+        children: [
+          Center(
+            child: Text("Quiz Finish"),
+          ),
 
+        ],
       ),
     );
   }

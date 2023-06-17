@@ -37,7 +37,7 @@ class LoginCubit extends Cubit<LoginState> {
             SharedPreference.put(key: "login", value: "true");
             SharedPreference.put(key: "token", value: body["token"]);
             print(body["token"]);
-            Navigator.pushNamed(context, AppRoutes.homeLayoutScreenRoute);
+            Navigator.pushNamedAndRemoveUntil(context, AppRoutes.homeLayoutScreenRoute,(route) => false,);
           }
 
         return value;

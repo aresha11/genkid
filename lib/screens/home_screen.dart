@@ -21,19 +21,19 @@ class HomeScreen extends StatelessWidget {
           width: double.infinity,
           child: Image.asset(AppImages.backGround, fit: BoxFit.cover),
         ),
-        Positioned(
-          top: 5.h,
-          child: Row(
-            children: [
-              IconButton(onPressed: () {
-                SharedPreference.put(key: "login", value: "false");
-                Navigator.pushNamed(context, AppRoutes.splashScreenRoute);
-              },
-                  icon: const Icon(Icons.arrow_back_ios_outlined),color: Colors.black),
-              const Text("LogOut",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w700,fontSize: 20),),
-            ],
-          ),
-        ),
+        // Positioned(
+        //   top: 5.h,
+        //   child: Row(
+        //     children: [
+        //       IconButton(onPressed: () {
+        //         SharedPreference.put(key: "login", value: "false");
+        //         Navigator.pushNamed(context, AppRoutes.splashScreenRoute);
+        //       },
+        //           icon: const Icon(Icons.arrow_back_ios_outlined),color: Colors.black),
+        //       const Text("LogOut",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w700,fontSize: 20),),
+        //     ],
+        //   ),
+        // ),
         Positioned(
           left: 4.w,
           right: 4.w,
