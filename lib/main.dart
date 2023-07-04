@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         return   MultiBlocProvider(
           providers: [
             BlocProvider(
-              create: (context) => BottomNavigationBarCubit(),
+              create: (context) => BottomNavigationBarCubit()..currentIndex=0,
             ),
             BlocProvider(
               create: (context) => RegisterCubit(),

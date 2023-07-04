@@ -57,9 +57,12 @@ class _SplashScreenState extends State<SplashScreen>
 
     Timer(Duration(seconds: 4), () {
       if(SharedPreference.get(key: "login")=="true"){
-        Navigator.pushReplacement(context, PageTransition(const HomeLayoutScreen()));
+        Navigator.pushNamedAndRemoveUntil(context, AppRoutes.homeLayoutScreenRoute, (route) => false);
+       // Navigator.pushReplacement(context, PageTransition(const HomeLayoutScreen()));
       }else {
-        Navigator.pushReplacement(context, PageTransition(const LoginScreen()));
+        Navigator.pushNamedAndRemoveUntil(context, AppRoutes.loginScreenRoute, (route) => false);
+
+        //Navigator.pushReplacement(context, PageTransition(const LoginScreen()));
       }
     });
   }

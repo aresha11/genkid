@@ -22,7 +22,7 @@ class InputField extends StatefulWidget {
   String? initialValue;
 
   InputField(
-      {super.key,
+      {Key? key,
       this.readonly = false,
       this.label,
       this.hint,
@@ -37,7 +37,7 @@ class InputField extends StatefulWidget {
       this.initialValue,
       required this.onchange,
       required this.onEditingComplete,
-      this.borderColor = Colors.red});
+      this.borderColor = Colors.red}) : super(key: key);
 
   @override
   State<InputField> createState() => _InputFieldState();

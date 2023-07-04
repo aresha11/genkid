@@ -9,12 +9,11 @@ class MainButton extends StatefulWidget {
 
 
   MainButton
-      ({
-    super.key,
+      ({Key? key,
     this.title,
     this.onPressed,
     this.color
-  });
+  }) : super(key: key);
   @override
   State<MainButton> createState() => _MainButtonState();
 }

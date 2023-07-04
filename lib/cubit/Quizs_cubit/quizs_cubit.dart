@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:genkid/config/data/local/shared_preference.dart';
 import 'package:genkid/config/data/shared/dio_helper.dart';
 import 'package:genkid/config/models/questions_model.dart';
+import 'package:genkid/screens/video_content.dart';
 import 'package:meta/meta.dart';
 
 import '../../config/models/quiz_model.dart';
@@ -36,41 +37,13 @@ class QuizsCubit extends Cubit<QuizsState> {
     } else {
       //quizFinish=true;
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => QuizFinish(),));
+          context, MaterialPageRoute(builder: (context) => const QuizFinish(),));
       SharedPreference.put(key: "videoId", value:SharedPreference.get(key: "videoId").toString()=="null"?1:SharedPreference.get(key: "videoId")+1 );
-      SharedPreference.removeData(key: "quizId");
+      SharedPreference.removeData(key: "quiz");
       SharedPreference.put(key: "next", value: "true");
       index=0;
     }
   }
-
-  // final FlutterTts flutterTts=FlutterTts();
-  //
-  // speech(text)async{
-  //   await flutterTts.setLanguage("en-US");
-  //   await flutterTts.setPitch(1);
-  //   await flutterTts.speak(text);
-  //
-  // }
-
-  //
-  // void getAllQuizs() async {
-  //   //data.clear();
-  //   emit(LoadingQuizState());
-  //   await dioHelper.getData(
-  //     url: "http://aresha11-001-site1.ftempurl.com/api/Quizs",
-  //   ).then((value) {
-  //     if (value.statusCode == 200) {
-  //       emit(GetQuizSuccessState());
-  //       quizModel = QuizModel.fromJson(json: value.data);
-  //       print(quizModel.data[0].id);
-  //     }
-  //   }).catchError((error) {
-  //     emit(GetQuizFilState());
-  //     throw error;
-  //   });
-  // }
-
 
   void getAllSubGroups() async {
     //data.clear();
@@ -91,14 +64,19 @@ class QuizsCubit extends Cubit<QuizsState> {
 
 
   void getAllQuestions() async {
+    print( SharedPreference.get(key: "htmlQuizId"));
+    print( SharedPreference.get(key: "scratchQuizId"));
+    print(SharedPreference.get(key: "quizType"));
     //data.clear();
     emit(LoadingQuestionsState());
     await dioHelper.getData(
-      url: "http://aresha11-001-site1.ftempurl.com/api/Questions/GetBySubgroubId/1",
+      url: "http://aresha11-001-site1.ftempurl.com/api/Questions/GetBySubgroubId/${SharedPreference.get(key: "quizType").toString()=="html"?SharedPreference.get(key: "htmlQuizId"):SharedPreference.get(key: "scratchQuizId")}",
     ).then((value) {
+      print(SharedPreference.get(key: "htmlQuizId"));
       if (value.statusCode == 200) {
         emit(GetQuestionsSuccessState());
          questionsModel = QuestionsModel.fromJson(json: value.data);
+         print(questionsModel.data[0].option1);
       }
     }).catchError((error) {
       emit(GetQuestionsFilState());

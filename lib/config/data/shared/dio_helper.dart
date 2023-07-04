@@ -97,9 +97,9 @@ class DioHelper {
       dio.options.headers = {
         'Content-Type': 'application/json; char=UTF-8',
       };
-      final Response response = await dio.put(
+      final Response response = await dio.put(url,
         queryParameters: data,
-       url,
+
         data: data,
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,

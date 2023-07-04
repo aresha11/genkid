@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:genkid/config/data/local/shared_preference.dart';
-import 'package:genkid/config/utility/app_images.dart';
-import 'package:genkid/config/utility/routes.dart';
 import 'package:genkid/cubit/courses_cubit/courses_cubit.dart';
+import 'package:genkid/screens/video_content.dart';
 
 import 'package:sizer/sizer.dart';
 
@@ -19,7 +18,7 @@ class CourseContent extends StatefulWidget {
 class _CourseContentState extends State<CourseContent> {
   @override
   void initState() {
-
+    context.read<CoursesCubit>().getVideosById(playListId: context.read<CoursesCubit>().playlistsModel.data[widget.index].id.toString());
     super.initState();
   }
 
@@ -28,8 +27,8 @@ class _CourseContentState extends State<CourseContent> {
   int? video;
   @override
   Widget build(BuildContext context) {
-   int video=SharedPreference.get(key: 'video').toString()=="null"?0:SharedPreference.get(key: 'video');
-    int quiz=SharedPreference.get(key: 'quiz').toString()=="null"?0:SharedPreference.get(key: 'video');
+   // int video=SharedPreference.get(key: 'video').toString()=="null"?0:SharedPreference.get(key: 'video');
+   //  int quiz=SharedPreference.get(key: 'quiz').toString()=="null"?0:SharedPreference.get(key: 'video');
     data=context.read<CoursesCubit>().corseContentModel.data;
     double _w = MediaQuery.of(context).size.width;
     double _h = MediaQuery.of(context).size.height;
@@ -49,7 +48,7 @@ class _CourseContentState extends State<CourseContent> {
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.black,
-                  image: DecorationImage(image: AssetImage(AppImages.courseContent),fit: BoxFit.cover)
+                  image: DecorationImage(image: NetworkImage(context.read<CoursesCubit>().playlistsModel.data[widget.index].photo.toString()),)
               ),
               child: Row(
                 children: [
@@ -68,15 +67,22 @@ class _CourseContentState extends State<CourseContent> {
                     child: ListView.builder(
                       itemCount: data.length,
                         itemBuilder: (context,index)=>
+
+                        state is LoadingCoursesByIdState?
+                        Container(
+                          padding: EdgeInsets.only(bottom: 50,right: 80.w),
+                          width: 1.w,
+                          child: const CircularProgressIndicator(
+                            color:  Colors.black,
+                          ),
+                        ):
                         Column(
                           children: [
                             (index==0||SharedPreference.get(key: "videoId").toString()=="null"?index==0:index<=SharedPreference.get(key: "videoId"))?
                             InkWell(
                               onTap: (){
-                                print(video);
-                                SharedPreference.put(key: 'video', value: index);
                                 context.read<CoursesCubit>().currentVideo=context.read<CoursesCubit>().corseContentModel.data[index].video;
-                                Navigator.pushNamed(context, AppRoutes.videoContentRoute);
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => VideoContent(id: context.read<CoursesCubit>().playlistsModel.data[widget.index].id.toString(),index: index),));
                               },
                               child: Container(
                                 height: _w / 4,

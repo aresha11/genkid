@@ -132,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               MainButton(
                                 title: AppStrings.login,
-                                color: AppColors.primaryColorDark,
+                                color: Colors.white,
                                 onPressed: () {
                                  context.read<LoginCubit>().login(email: emailController.text, password: passwordController.text,context: context);
                                 },

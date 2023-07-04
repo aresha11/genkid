@@ -1,30 +1,32 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:genkid/config/data/local/shared_preference.dart';
 import 'package:genkid/config/utility/routes.dart';
+import 'package:genkid/cubit/courses_cubit/courses_cubit.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-
-
 class VideoContent extends StatefulWidget {
+  VideoContent({required this.id,required this.index});
+  String id;
+  int index;
 
   @override
   State<VideoContent> createState() => _VideoContentState();
 }
 
 class _VideoContentState extends State<VideoContent> {
-  //late VideoPlayerController _controller;
   late YoutubePlayerController _controller2 ;
   @override
   void initState() {
     _controller2 = YoutubePlayerController(initialVideoId:
-    // url('https://www.youtube.com/watch?v=PMf-1-F4YB0'))
-        "PMf-1-F4YB0",
+     url('${context.read<CoursesCubit>().corseContentModel.data[widget.index].video}'),
+        //"l8xd_NzDYuE",
       flags: const YoutubePlayerFlags(
         autoPlay: true,
         mute: false,
-      ),)
-    // _controller=VideoPlayerController.network('https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4')
+      ),
+    )
       ..initialVideoId;
         setState(() {
 
@@ -35,10 +37,21 @@ class _VideoContentState extends State<VideoContent> {
   }
 
   void _onPlayerStateChange() {
+    bool z=SharedPreference.get(key: "videoId").toString()=="null"?true:widget.index>=SharedPreference.get(key: "videoId")?true:false;
     if (_controller2.value.playerState == PlayerState.ended) {
-      // Video has ended
-     SharedPreference.put(key: "quizId", value: 1);
-     Navigator.pushNamed(context, AppRoutes.quizSplashScreenRoute);
+      //Video has ended
+       if(z==true){
+        if(widget.id=="2"){
+          SharedPreference.put(key: "htmlQuizId", value: SharedPreference.get(key: "htmlQuizId").toString()=="null"?17:SharedPreference.get(key: "htmlQuizId")+1);
+          SharedPreference.put(key: "quizType", value: "html");
+        }else{
+          SharedPreference.put(key: "scratchQuizId", value: SharedPreference.get(key: "scratchQuizId").toString()=="null"?22:SharedPreference.get(key: "scratchQuizId")+1);
+          SharedPreference.put(key: "quizType", value: "scratch");
+       }
+      }
+
+     SharedPreference.put(key: "quiz", value: true);
+     Navigator.pushReplacementNamed(context, AppRoutes.quizSplashScreenRoute);
      _controller2.pause();
     }
   }
@@ -66,10 +79,10 @@ class _VideoContentState extends State<VideoContent> {
                     },)
 
                 ),
-                Positioned(
-                    left: 15,
-                    top: 10,
-                    child: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back_ios,color: Colors.white,))),
+                // Positioned(
+                //     left: 15,
+                //     top: 10,
+                  //  child: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back_ios,color: Colors.white,))),
                 Positioned(
                   bottom: 2,
                   child:
@@ -81,7 +94,8 @@ class _VideoContentState extends State<VideoContent> {
                         setState(() {
 
                         });
-                      }, icon: _controller2.value.isPlaying ? Icon(Icons.pause,size: 35,): Icon(Icons.play_arrow,size: 35,)),
+                      },
+                          icon: _controller2.value.isPlaying ? Icon(Icons.pause,size: 35,): Icon(Icons.play_arrow,size: 35,)),
                       // Container(
                       //   width: 320,
                       //   child: VideoProgressIndicator(
@@ -89,7 +103,7 @@ class _VideoContentState extends State<VideoContent> {
                       //       backgroundColor: Colors.white
                       //   )),
                       // ),
-                      IconButton(onPressed: (){}, icon: Icon(Icons.fullscreen_exit_rounded,size: 35,))
+                     // IconButton(onPressed: (){}, icon: const Icon(Icons.fullscreen_exit_rounded,size: 35,))
                     ],
                   ),),
 

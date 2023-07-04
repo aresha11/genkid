@@ -1,6 +1,6 @@
 class AppStrings{
 
- static String login   ="Sing in";
+ static String login   ="Sign in";
  static String register="Register";
  static String createAccount="Sing up";
  static String rememberMe="Remember me";

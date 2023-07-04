@@ -33,13 +33,13 @@ class QuestionScreen extends StatelessWidget {
   builder: (context, state) {
 
     List<String>? answers= [
-      "${SharedPreference.get(key: "quizId").toString()!="null"? context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].option1:""}",
-      "${SharedPreference.get(key: "quizId").toString()!="null"?context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].option2:""}",
-      "${ SharedPreference.get(key: "quizId").toString()!="null"?context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].option3:""}",
-      "${SharedPreference.get(key: "quizId").toString()!="null"?context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].option4:""}"
+      "${SharedPreference.get(key: "quiz").toString()!="null"?context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].option1:""}",
+      "${SharedPreference.get(key: "quiz").toString()!="null"?context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].option2:""}",
+      "${SharedPreference.get(key: "quiz").toString()!="null"?context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].option3:""}",
+      "${SharedPreference.get(key: "quiz").toString()!="null"?context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].option4:""}"
     ];
     return Scaffold(
-      body: SharedPreference.get(key: "quizId").toString()=="null"?
+      body: SharedPreference.get(key: "quiz").toString()=="null"?
         Stack(
           children: [
             Container(
@@ -95,7 +95,8 @@ class QuestionScreen extends StatelessWidget {
                 Stack(
                   children: [
                     Container(
-                      alignment: Alignment.center,
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      alignment: Alignment.centerLeft,
                       width: 80.w,
                       height: 25.h,
                       decoration: BoxDecoration(
@@ -109,7 +110,7 @@ class QuestionScreen extends StatelessWidget {
                           ] ,
                           borderRadius: BorderRadius.circular(30),
                           border: Border.all(color: const Color(0xff7F5BFF), width: 1.3,strokeAlign:BorderSide.strokeAlignOutside)),
-                      child:  Text("${state is LoadingQuestionsState?"": context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].questione}"),
+                      child:  Text("${state is LoadingQuestionsState?"": context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].questione}",style: TextStyle(fontSize: 18.sp,fontWeight: FontWeight.w600),),
                     ),
                     Positioned(
                       bottom: 1.h,
@@ -130,7 +131,7 @@ class QuestionScreen extends StatelessWidget {
                         itemBuilder:(context, index) =>AnswerContainer(
                           correct: context.read<QuizsCubit>().questionsModel.data[context.read<QuizsCubit>().index].correct.toString(),
                             index: index,
-                          answers:state is LoadingQuestionsState?"":  answers[index],
+                          answers: answers[index],
                         ) ,
                     ),
                   ),

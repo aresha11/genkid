@@ -24,16 +24,16 @@ class ProfileScreen extends StatelessWidget {
                   image: AssetImage('images/bg.jpeg'), fit: BoxFit.cover)),
           child: Stack(
             children: [
-              Positioned(
-                  top: 3.h,
-                  right: 0,
-                  child: IconButton(
-                    icon: Icon(Icons.exit_to_app),
-                    onPressed: () {
-                      SharedPreference.put(key: "login", value: "false");
-                      Navigator.pushNamed(context, AppRoutes.splashScreenRoute);
-                    },
-                  )),
+              // Positioned(
+              //     top: 3.h,
+              //     right: 0,
+              //     child: IconButton(
+              //       icon: Icon(Icons.exit_to_app),
+              //       onPressed: () {
+              //         SharedPreference.put(key: "login", value: "false");
+              //         Navigator.pushNamed(context, AppRoutes.splashScreenRoute);
+              //       },
+              //     )),
               Positioned(
                 top: 4.h,
                 left: 0,

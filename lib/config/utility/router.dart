@@ -46,9 +46,9 @@ Route<dynamic> onGenerate(RouteSettings routeSettings) {
       case AppRoutes.forgetPasswordRoute:
       return MaterialPageRoute(
           builder: (context) => const ForgetPassword(), settings: routeSettings);
-      case AppRoutes.videoContentRoute:
-      return MaterialPageRoute(
-          builder: (context) =>  VideoContent(), settings: routeSettings);
+      // case AppRoutes.videoContentRoute:
+      // return MaterialPageRoute(
+      //     builder: (context) =>  VideoContent(), settings: routeSettings);
       case AppRoutes.profileScreenRoute:
       return MaterialPageRoute(
           builder: (context) => const ProfileScreen(), settings: routeSettings);

@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:genkid/config/data/local/shared_preference.dart';
 import 'package:genkid/cubit/Quizs_cubit/quizs_cubit.dart';
 import 'package:sizer/sizer.dart';
 
 class AnswerContainer extends StatefulWidget {
-  AnswerContainer({Key? key, required this.index,required this.answers,required this.correct}) : super(key: key);
+  AnswerContainer(
+      {Key? key,
+      required this.index,
+      required this.answers,
+      required this.correct})
+      : super(key: key);
 
   int index;
   String answers;
@@ -17,51 +23,85 @@ class AnswerContainer extends StatefulWidget {
 }
 
 class _AnswerContainerState extends State<AnswerContainer> {
+  String? newOptions;
+  String? newCorrect;
+
+  removeAnswer(options) {
+    print(options);
+    List<String> words = options.split(' ');
+    print(words);
+    words = words.sublist(1); // Remove the first word
+    newOptions = words.join('');
+    print(newOptions);
+  }
+
+  removeCorrect(correct) {
+    print(correct);
+    List<String> words = correct.split(' ');
+    print(words); // Remove the first word
+    newCorrect = words.join('');
+    print(newCorrect);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        InkWell(
-          onTap: () {
-            if(widget.answers== widget.correct){
-              widget.firstContainerColor = const Color(0xff0B953A);
-              widget.secondContainerColor = const Color(0xff24C22B);
-            }else{
-              widget.firstContainerColor=const Color(0xffC61313);
-              widget.secondContainerColor=const Color(0xffC61313);
-            }
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          InkWell(
+            onTap: () {
+              removeAnswer(widget.answers);
+              removeCorrect(widget.correct);
+              if (newOptions == newCorrect) {
+                widget.firstContainerColor = const Color(0xff0B953A);
+                widget.secondContainerColor = const Color(0xff24C22B);
+                SharedPreference.put(
+                    key: "correct",
+                    value:
+                        SharedPreference.get(key: "correct").toString() == "null"
+                            ? 1
+                            : SharedPreference.get(key: "correct") + 1);
+              } else {
+                widget.firstContainerColor = const Color(0xffC61313);
+                widget.secondContainerColor = const Color(0xffC61313);
+              }
 
-            Future.delayed(Duration(milliseconds: 800),() {
-              context.read<QuizsCubit>().changeIndex(context);
-              widget. secondContainerColor = const Color(0xff7F5BFF);
-              widget.  firstContainerColor = const Color(0xff4624C2);
-              setState(() {
+              Future.delayed(
+                Duration(milliseconds: 800),
+                () {
+                  context.read<QuizsCubit>().changeIndex(context);
+                  widget.secondContainerColor = const Color(0xff7F5BFF);
+                  widget.firstContainerColor = const Color(0xff4624C2);
+                  setState(() {});
+                },
+              );
 
-              });
-            },);
-
-
-            setState(() {});
-          },
-          child: Container(
-            alignment: Alignment.center,
-            height: 8.h,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [
-                widget.firstContainerColor,
-                widget.secondContainerColor,
-              ]),
-              //color: widget.containerColor,
-              borderRadius: BorderRadius.circular(20),
+              setState(() {});
+            },
+            child: Container(
+              alignment: Alignment.centerLeft,
+              padding: EdgeInsets.all(15),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(colors: [
+                  widget.firstContainerColor,
+                  widget.secondContainerColor,
+                ]),
+                //color: widget.containerColor,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                widget.answers,
+                style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
+              ),
             ),
-            child:  Text(widget.answers),
           ),
-        ),
-        SizedBox(
-          height: 1.h,
-        )
-      ],
+          SizedBox(
+            height: 1.h,
+          )
+        ],
+      ),
     );
   }
 }
