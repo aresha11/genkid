@@ -28,7 +28,8 @@ class _CourseContentState extends State<CourseContent> {
   int? video;
   @override
   Widget build(BuildContext context) {
-    video=SharedPreference.get(key: 'video').toString()=="null"?0:SharedPreference.get(key: 'video');
+   int video=SharedPreference.get(key: 'video').toString()=="null"?0:SharedPreference.get(key: 'video');
+    int quiz=SharedPreference.get(key: 'quiz').toString()=="null"?0:SharedPreference.get(key: 'video');
     data=context.read<CoursesCubit>().corseContentModel.data;
     double _w = MediaQuery.of(context).size.width;
     double _h = MediaQuery.of(context).size.height;

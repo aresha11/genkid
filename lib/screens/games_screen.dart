@@ -1,4 +1,6 @@
+import 'package:device_apps/device_apps.dart';
 import 'package:external_app_launcher/external_app_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:genkid/widgets/main_button.dart';
 
@@ -21,9 +23,21 @@ class _GamesScreenState extends State<GamesScreen> {
 
           InkWell(
             onTap: () async {
-              var openAppResult = await LaunchApp.openApp(
-                androidPackageName: 'com.DilmerGamesLLC.ARRace',
-              );
+              try {
+                ///checks if the app is installed on your mobile device
+                bool isInstalled = await DeviceApps.isAppInstalled('si.modula.android.instantheartrate');
+                if (isInstalled) {
+                  DeviceApps.openApp("com.DilmerGamesLLC.ARRace");
+                } else {
+                  ///if the app is not installed it lunches google play store so you can install it from there
+                  launch("market://details?id=" +"com.DilmerGamesLLC.ARRace");
+                }
+              } catch (e) {
+                print(e);
+              }
+              // var openAppResult = await LaunchApp.openApp(
+              //   androidPackageName: 'com.DilmerGamesLLC.ARRace',
+              // );
             },
             child:
                 Container(
@@ -49,9 +63,21 @@ class _GamesScreenState extends State<GamesScreen> {
           SizedBox(height: 20,),
           InkWell(
             onTap: () async {
-              var openAppResult = await LaunchApp.openApp(
-                androidPackageName: 'com.DefaultCompany.Puzzle_game',
-              );
+              try {
+                ///checks if the app is installed on your mobile device
+                bool isInstalled = await DeviceApps.isAppInstalled('si.modula.android.instantheartrate');
+                if (isInstalled) {
+                  DeviceApps.openApp("com.DefaultCompany.Puzzle_game");
+                } else {
+                  ///if the app is not installed it lunches google play store so you can install it from there
+                  launch("market://details?id=" +"com.DefaultCompany.Puzzle_game");
+                }
+              } catch (e) {
+                print(e);
+              }
+              // var openAppResult = await LaunchApp.openApp(
+              //   androidPackageName: 'com.DefaultCompany.Puzzle_game',
+              // );
             },
             child:
                 Container(
@@ -78,9 +104,21 @@ class _GamesScreenState extends State<GamesScreen> {
 
           InkWell(
             onTap: () async {
-              var openAppResult = await LaunchApp.openApp(
-                androidPackageName: 'com.DefaultCompany.Memory_game',
-              );
+              try {
+                ///checks if the app is installed on your mobile device
+                bool isInstalled = await DeviceApps.isAppInstalled('si.modula.android.instantheartrate');
+                if (isInstalled) {
+                  DeviceApps.openApp("com.DefaultCompany.Puzzle_game");
+                } else {
+                  ///if the app is not installed it lunches google play store so you can install it from there
+                  launch("market://details?id=" +"com.DefaultCompany.Memory_game");
+                }
+              } catch (e) {
+                print(e);
+              }
+              // var openAppResult = await LaunchApp.openApp(
+              //   androidPackageName: 'com.DefaultCompany.Memory_game',
+              // );
             },
             child:
 
