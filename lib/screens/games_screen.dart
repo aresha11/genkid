@@ -25,7 +25,7 @@ class _GamesScreenState extends State<GamesScreen> {
             onTap: () async {
               try {
                 ///checks if the app is installed on your mobile device
-                bool isInstalled = await DeviceApps.isAppInstalled('si.modula.android.instantheartrate');
+                bool isInstalled = await DeviceApps.isAppInstalled('com.DilmerGamesLLC.ARRace');
                 if (isInstalled) {
                   DeviceApps.openApp("com.DilmerGamesLLC.ARRace");
                 } else {
@@ -65,7 +65,7 @@ class _GamesScreenState extends State<GamesScreen> {
             onTap: () async {
               try {
                 ///checks if the app is installed on your mobile device
-                bool isInstalled = await DeviceApps.isAppInstalled('si.modula.android.instantheartrate');
+                bool isInstalled = await DeviceApps.isAppInstalled('com.DefaultCompany.Puzzle_game');
                 if (isInstalled) {
                   DeviceApps.openApp("com.DefaultCompany.Puzzle_game");
                 } else {
@@ -106,9 +106,9 @@ class _GamesScreenState extends State<GamesScreen> {
             onTap: () async {
               try {
                 ///checks if the app is installed on your mobile device
-                bool isInstalled = await DeviceApps.isAppInstalled('si.modula.android.instantheartrate');
+                bool isInstalled = await DeviceApps.isAppInstalled('com.DefaultCompany.Memory_game');
                 if (isInstalled) {
-                  DeviceApps.openApp("com.DefaultCompany.Puzzle_game");
+                  DeviceApps.openApp("com.DefaultCompany.Memory_game");
                 } else {
                   ///if the app is not installed it lunches google play store so you can install it from there
                   launch("market://details?id=" +"com.DefaultCompany.Memory_game");
