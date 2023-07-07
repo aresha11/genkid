@@ -6,8 +6,20 @@ import 'package:sizer/sizer.dart';
 
 import '../../cubit/Quizs_cubit/quizs_cubit.dart';
 
-class QuizSplashScreen extends StatelessWidget {
+class QuizSplashScreen extends StatefulWidget {
   const QuizSplashScreen({Key? key}) : super(key: key);
+
+  @override
+  State<QuizSplashScreen> createState() => _QuizSplashScreenState();
+}
+
+class _QuizSplashScreenState extends State<QuizSplashScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    context.read<QuizsCubit>().getQuestionsBySubgroupId();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +52,7 @@ class QuizSplashScreen extends StatelessWidget {
                   child: IconButton(
                     icon: const Icon(Icons.arrow_forward_ios_outlined),
                     onPressed: () {
-                   //   context.read<QuizsCubit>().getAllQuestions();
+
                       Navigator.pushReplacementNamed(context, AppRoutes.questionScreenRoute);
                     },
 

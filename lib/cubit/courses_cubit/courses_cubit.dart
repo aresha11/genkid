@@ -20,29 +20,82 @@ class CoursesCubit extends Cubit<CoursesState> {
   DioHelper dioHelper=DioHelper();
 
   PlaylistsModel playlistsModel=PlaylistsModel();
+  PlaylistsModel playlistsModel1=PlaylistsModel();
+  PlaylistsModel playlistsModel2=PlaylistsModel();
+  PlaylistsModel playlistsModel3=PlaylistsModel();
   CourseContentModel corseContentModel=CourseContentModel();
 
-  List<PlaylistsModel> data=[];
+  List data1=[];
+  List data2=[];
+  List data3=[];
 
 
   void  getAllCourses()async {
-    //data.clear();
+
     emit(LoadingCoursesState());
     await dioHelper.getData(
       url:"http://aresha11-001-site1.ftempurl.com/api/Playlists",
 
     ).then((value) {
+      print(value.data[0]);
+      playlistsModel=PlaylistsModel.fromJson(json: value.data);
+      for(int i=0;i<=6;i++){
+        if(value.data[i]["id"]<=2){
+          Map<String,dynamic> map={
+              "id":playlistsModel.data[i].id,
+              "name":playlistsModel.data[i].name,
+              "autherName":playlistsModel.data[i].autherName,
+              "photo":playlistsModel.data[i].photo,
+            };
+          data1.add(map);
+
+        }else if(value.data[i]["id"]<=7){
+          Map<String,dynamic> map={
+            "id":playlistsModel.data[i].id,
+            "name":playlistsModel.data[i].name,
+            "autherName":playlistsModel.data[i].autherName,
+            "photo":playlistsModel.data[i].photo,
+          };
+          data2.add(map);
+        }else{
+          Map<String,dynamic> map={
+            "id":playlistsModel.data[i].id,
+            "name":playlistsModel.data[i].name,
+            "autherName":playlistsModel.data[i].autherName,
+            "photo":playlistsModel.data[i].photo,
+          };
+          data3.add(map);
+        }
+      }
+      playlistsModel1=PlaylistsModel.fromJson(json: data1);
+      playlistsModel2=PlaylistsModel.fromJson(json: data2);
+      playlistsModel3=PlaylistsModel.fromJson(json: data3);
+
+      print("first${playlistsModel1.data.length}");
+      print("second${playlistsModel2.data.length}");
+      print("third${playlistsModel3.data.length}");
+
       if (value.statusCode ==200) {
         emit(GetDataSuccessState());
-        playlistsModel=PlaylistsModel.fromJson(json: value.data);
+
         print(playlistsModel.data.length);
-        print(playlistsModel.data[0].photo);
+
       }
+      data1.clear();
+      data2.clear();
+      data3.clear();
     }).catchError((error) {
       emit(GetDataErrorState());
       throw error;
     });
   }
+
+
+
+
+
+
+
     getVideosById({required String playListId})async {
     //data.clear();
     emit(LoadingCoursesByIdState());

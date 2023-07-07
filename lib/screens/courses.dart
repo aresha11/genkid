@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:genkid/config/utility/routes.dart';
 import 'package:genkid/cubit/courses_cubit/courses_cubit.dart';
 import 'package:genkid/screens/course_content.dart';
 import 'package:sizer/sizer.dart';
@@ -46,6 +45,15 @@ class _CoursesState extends State<Courses> {
                   itemCount: data.length,
                   //padding: EdgeInsets.symmetric(horizontal: 20),
                   itemBuilder: (context,index)=>
+                  state is LoadingCoursesState?
+                Container(
+                  margin: EdgeInsets.only(left: 40.w,right: 40.w,bottom: 10.h),
+
+                  height: 10.h,
+                    width: 1.w,
+                    child: const CircularProgressIndicator(color: Colors.black),
+                )
+              :
               Stack(
                 alignment: Alignment.center,
                 children: [

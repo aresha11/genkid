@@ -36,23 +36,35 @@ class _VideoContentState extends State<VideoContent> {
 
   }
 
-  void _onPlayerStateChange() {
+  void _onPlayerStateChange() async{
     bool z=SharedPreference.get(key: "videoId").toString()=="null"?true:widget.index>=SharedPreference.get(key: "videoId")?true:false;
+    SharedPreference.put(key: "increaseVideoIndex", value: z);
     if (_controller2.value.playerState == PlayerState.ended) {
       //Video has ended
        if(z==true){
+         print("true");
         if(widget.id=="2"){
-          SharedPreference.put(key: "htmlQuizId", value: SharedPreference.get(key: "htmlQuizId").toString()=="null"?17:SharedPreference.get(key: "htmlQuizId")+1);
+          int htmlQuizId=SharedPreference.get(key: "htmlQuizId").toString()=="null"?17:SharedPreference.get(key: "htmlQuizId")+1;
+          SharedPreference.removeData(key: "htmlQuizId");
+          await SharedPreference.put(key: "htmlQuizId", value: htmlQuizId).then((value) {
+            Navigator.pushReplacementNamed(context, AppRoutes.quizSplashScreenRoute);
+          });
           SharedPreference.put(key: "quizType", value: "html");
+          SharedPreference.put(key: "quiz", value: true);
         }else{
-          SharedPreference.put(key: "scratchQuizId", value: SharedPreference.get(key: "scratchQuizId").toString()=="null"?22:SharedPreference.get(key: "scratchQuizId")+1);
-          SharedPreference.put(key: "quizType", value: "scratch");
-       }
-      }
+          int scratchQuizId =SharedPreference.get(key: "scratchQuizId").toString()=="null"?22:SharedPreference.get(key: "scratchQuizId")+1;
+          SharedPreference.removeData(key: "scratchQuizId");
+          await SharedPreference.put(key: "scratchQuizId", value: scratchQuizId).then((value) {
+            Navigator.pushReplacementNamed(context, AppRoutes.quizSplashScreenRoute);
+          });
 
-     SharedPreference.put(key: "quiz", value: true);
-     Navigator.pushReplacementNamed(context, AppRoutes.quizSplashScreenRoute);
-     _controller2.pause();
+          SharedPreference.put(key: "quizType", value: "scratch");
+          SharedPreference.put(key: "quiz", value: true);
+       }
+      }else{
+         SharedPreference.put(key: "quiz", value: true);
+         Navigator.pushReplacementNamed(context, AppRoutes.quizSplashScreenRoute);
+       }
     }
   }
 

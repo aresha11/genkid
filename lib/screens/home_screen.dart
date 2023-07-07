@@ -44,8 +44,8 @@ class HomeScreen extends StatelessWidget {
             width: 100.w,
             child: GridView.builder(
               itemCount: images.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,mainAxisSpacing: 8,crossAxisSpacing: 13,mainAxisExtent: 260),
+              gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,mainAxisSpacing: .1.h,crossAxisSpacing: 5.w,mainAxisExtent: 38.h),
               itemBuilder: (context, index) {
                 return HomeContainer(
                   imageUrl: images[index],

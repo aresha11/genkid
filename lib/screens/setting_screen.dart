@@ -3,7 +3,10 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:genkid/config/data/local/shared_preference.dart';
 import 'package:genkid/config/utility/app_images.dart';
 import 'package:genkid/config/utility/routes.dart';
+import 'package:genkid/screens/settings_screens/faq.dart';
+import 'package:genkid/screens/settings_screens/html_editor/html_write.dart';
 import 'package:genkid/screens/settings_screens/rate_screen.dart';
+import 'package:genkid/screens/settings_screens/support_us.dart';
 import 'package:sizer/sizer.dart';
 import '../widgets/primary_text.dart';
 import '../widgets/setting_row.dart';
@@ -35,10 +38,9 @@ class SettingScreen extends StatelessWidget {
               child: Column(
                 children: [
                   ProfileRow(prefixIcon: Icons.person,
-                      title: "EditProfile",
+                      title: "Html Test",
                       onPress: () {
-                      //   Navigator.pushNamed(
-                      //       context, AppRoutes.editProfileRoute);
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const HtmlWriteCode()));
                        }
                       ),
                   SizedBox(height: 2.h,),
@@ -98,15 +100,19 @@ class SettingScreen extends StatelessWidget {
                   const Divider(
                     thickness: 2, ),
                   SizedBox(height: 1.h,),
-                  ProfileRow(title: "HelpCenter",
-                    onPress: () {},
+                  ProfileRow(title: "FAQs",
+                    onPress: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const FAQ(),));
+                    },
                     needSuffix: false,),
                   SizedBox(height: 1.h,),
                   const Divider(
                     thickness: 2, ),
                   SizedBox(height: 1.h,),
-                  ProfileRow(title:"TermsConditions",
-                    onPress: () {},
+                  ProfileRow(title:"Support Us",
+                    onPress: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Support(),));
+                    },
                     needSuffix: false,),
                   SizedBox(height: 1.h,),
                   const Divider(

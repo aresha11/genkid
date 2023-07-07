@@ -27,20 +27,14 @@ class _AnswerContainerState extends State<AnswerContainer> {
   String? newCorrect;
 
   removeAnswer(options) {
-    print(options);
     List<String> words = options.split(' ');
-    print(words);
     words = words.sublist(1); // Remove the first word
     newOptions = words.join('');
-    print(newOptions);
   }
 
   removeCorrect(correct) {
-    print(correct);
     List<String> words = correct.split(' ');
-    print(words); // Remove the first word
     newCorrect = words.join('');
-    print(newCorrect);
   }
 
   @override

@@ -21,7 +21,7 @@ class HomeContainer extends StatelessWidget {
       onTap:(){
         Navigator.pushNamed(context,nextScreen );
         if(nextScreen==AppRoutes.quizSplashScreenRoute){
-          context.read<QuizsCubit>().getAllQuestions();
+          context.read<QuizsCubit>().getQuestionsBySubgroupId();
           if(nextScreen==AppRoutes.coursesScreenRoute){
           //context.read<CoursesCubit>().getCourseById();
           context.read<CoursesCubit>().getAllCourses();
@@ -32,7 +32,7 @@ class HomeContainer extends StatelessWidget {
           children: [
             Container(
               width: double.infinity,
-              child: Image.asset(AppImages.backGroundContainer,fit: BoxFit.fill),
+              child: Image.asset(AppImages.backGroundContainer,fit: BoxFit.fill,height: 37.h),
             ),
             Container(
               height: 31.h,

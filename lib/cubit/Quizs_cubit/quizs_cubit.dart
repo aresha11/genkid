@@ -38,7 +38,9 @@ class QuizsCubit extends Cubit<QuizsState> {
       //quizFinish=true;
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => const QuizFinish(),));
-      SharedPreference.put(key: "videoId", value:SharedPreference.get(key: "videoId").toString()=="null"?1:SharedPreference.get(key: "videoId")+1 );
+      if(SharedPreference.get(key: "increaseVideoIndex")==true){
+        SharedPreference.put(key: "videoId", value:SharedPreference.get(key: "videoId").toString()=="null"?1:SharedPreference.get(key: "videoId")+1 );
+      }
       SharedPreference.removeData(key: "quiz");
       SharedPreference.put(key: "next", value: "true");
       index=0;
@@ -63,7 +65,7 @@ class QuizsCubit extends Cubit<QuizsState> {
   }
 
 
-  void getAllQuestions() async {
+  void getQuestionsBySubgroupId() async {
     print( SharedPreference.get(key: "htmlQuizId"));
     print( SharedPreference.get(key: "scratchQuizId"));
     print(SharedPreference.get(key: "quizType"));
