@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genkid/config/utility/routes.dart';
+import 'package:genkid/screens/chat_bot.dart';
 import 'package:genkid/screens/course_content.dart';
 import 'package:genkid/screens/courses.dart';
 import 'package:genkid/screens/forget_password.dart';
@@ -61,6 +62,9 @@ Route<dynamic> onGenerate(RouteSettings routeSettings) {
       case AppRoutes.gameScreenRoute:
       return MaterialPageRoute(
           builder: (context) =>  GamesScreen(), settings: routeSettings);
+      case AppRoutes.chatBootRoute:
+      return MaterialPageRoute(
+          builder: (context) =>  ChatBoot(), settings: routeSettings);
     case AppRoutes.splashScreenRoute:
     default:
       return MaterialPageRoute(

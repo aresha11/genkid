@@ -49,6 +49,7 @@ class _HomeLayoutScreenState extends State<HomeLayoutScreen> {
             icons: [
               FluidNavBarIcon(icon: Icons.home),
               FluidNavBarIcon(icon: Icons.settings),
+              FluidNavBarIcon(icon: Icons.report_problem),
               FluidNavBarIcon(icon: Icons.person),
             ],
           ),
