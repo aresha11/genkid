@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "symptom-checker-jxju",
+  "private_key_id": "d28aba044534422790d65f9268bddccf0dd35d99",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEugIBADANBgkqhkiG9w0BAQEFAASCBKQwggSgAgEAAoIBAQCbfG3cedrPi4v1\nbT8ALamIYaGNgP7bnnTaka77Qe+0F5523HcXFYqYgw8woj85Uq1pDs9v/gsdiOv7\nnH/ngJ1VSQB9JH7RNNYWILHZ7VH9/OJVPumz6781dtly5/300ixWig4gbQ2GsZBW\na5QoXGPM20GuZFiAYRE6cElpo+DILhQLDbomTjQw2yB30AX7YPjN8trL6Z9O1C47\nWoKxXo+RzkJV8hx+4xBDbRe8xs5DLhnV8EjFXYkw3kY5ZgxLggMhH6JClEQ1VKqz\nZRT92i1iQrAOaapg4grjC+y/Elg6/tPb0XPtFsPEpLdTgRd4iYcja05mUCGaKOqh\nXmdQiUOXAgMBAAECggEACi+xLNgI1z7/qNEC5xqWuDoZMOGKEM5FPop7ybcsooJH\nnebcoHUHUu2HIbsHZFR/ytmvClm81a8CMsYydPKunAc/0nMBIeiRu/phXHMZQ4f9\nNfN8sQ5ZRQHnxgjf0NmyEOtTeJlcYP4iBB9hIfHHkgStPWUSjTqOu+LeVF7pm4Ob\nH7lYEkCuxY4Qxdfn3N4Yd5t82cQp4nwggkpbeu4fElg57+Sg3fm0/0+jWocftVIc\nEVJHmZ01E0C8Qud8EglfgxEnc1ehHqMdgPCUEQNOWtb539IE/yj2wIwqXBA/tEON\nECxuiuTWAsjZDC+P8nUgXX5H/oyHnYh3qnvMcuHsdQKBgQDP4Q7OICUJsteVl1c1\nkj2KYxXMXIE4YPY6ysPfl+b5SDy+39E/tCd7sjILEec9u1menv6EUiGf1FvTAWVv\n03NsKWb2BuDSAJS1UQX0DmHXcup1FJexI6bXrgTvgs0RIfMnDytD/jKIOwAldmSQ\n7aTVMrrXKaz0vIsiFTQOBaFr3QKBgQC/eo0UiJNMDAVAh6Za9oMFIyrHtGxEyPVa\np9bHCUXcFJqHqGsM35E36LFGrDdZLAxTqFSZvDJcOzhlG+8kgI6SaPB7EpWyDG3n\n9yGQwbcolNgNu4xXrKw5d5LgAWoM5y8SoCOvXLphqSIeyRIkk9UsX35hqakJ3K/t\nZhEw6mkAAwKBgGfyjxetZTfjUQABbF9iYBmKEIVfIFKT0ax2ZdmxuJKgd5eujZDA\nQhoNcg6tBieNPnQd5wE9nIiyhLQPd6yiXI4SaeTOba81ESdVe5eddXlpginHgU7X\nl/8zik5F5ssRYef/ItBeFOCgOCODfyglXQ4qztj2gwDiIuSJG72DPUOVAoGAIUct\nScpKv0a/iu2Ibfq13qi0AK1Mu8+pRK4y17i22X8DNFyC7mPUm0Dnvn6jx+2t3sQ8\nn9NjdUAdlwT51QA6xxtR4DHkrmMWnuAGh2ADcxwbSJe11m7+J6auchwM0F1Fgxkt\n2oZlJh/8/Bi5/H1s6R9XmaWg6UPfl4TLrBKxWP0CfzSVKrskqbX8UuRTmHbIhecI\ncEPZPtzOnDwsoYmm8/WNHa/t5w0DvktxPjPpm4rOkPQqTC8gcKJnBB4HdbpPmuTQ\nQ5ZPqwf/uJiK1zze4OVmRZN3+rysNzavKyloqfisFH7Uzo0qwmRaSErv3LO/WAVo\n82Ya3mEch7JCDoe2p+s=\n-----END PRIVATE KEY-----\n",
+  "client_email": "genkid-chatbot@symptom-checker-jxju.iam.gserviceaccount.com",
+  "client_id": "106196603471977988055",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/genkid-chatbot%40symptom-checker-jxju.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -16,9 +16,9 @@ class _HomeLayoutScreenState extends State<HomeLayoutScreen> {
 
   @override
   void initState() {
+    context.read<BottomNavigationBarCubit>().currentIndex=0;
     // TODO: implement initState
     super.initState();
-
     context.read<CoursesCubit>().getAllCourses();
     //context.read<GetUserInformationCubit>().getUserInformation();
   }

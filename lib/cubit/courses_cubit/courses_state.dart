@@ -8,3 +8,4 @@ class LoadingCoursesState extends CoursesState {}
 class LoadingCoursesByIdState extends CoursesState {}
 class GetDataSuccessState extends CoursesState {}
 class GetDataErrorState extends CoursesState {}
+class ChangeIndexState extends CoursesState {}

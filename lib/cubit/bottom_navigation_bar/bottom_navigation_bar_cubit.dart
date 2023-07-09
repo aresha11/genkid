@@ -19,7 +19,6 @@ class BottomNavigationBarCubit extends Cubit<BottomNavigationBarState> {
     SettingScreen(),
     ChatBoot(),
     ProfileScreen(),
-
   ];
 
 

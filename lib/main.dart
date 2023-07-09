@@ -9,7 +9,6 @@ import 'package:genkid/cubit/quesitions_cubit/quesitions_cubit.dart';
 import 'package:sizer/sizer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'config/utility/router.dart';
 import 'cubit/Quizs_cubit/quizs_cubit.dart';
 import 'cubit/auth/register_cubit/register_cubit.dart';
