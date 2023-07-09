@@ -120,7 +120,7 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
                 // child: Image.asset('assets/images/file_name.png')
                 child: Image.asset(
-                  'images/logo.jpeg',
+                  'images/logoo.jpeg',
                 ),
               ),
             ),
