@@ -17,7 +17,7 @@ class _QuizSplashScreenState extends State<QuizSplashScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    context.read<QuizsCubit>().getQuestionsBySubgroupId();
+    //context.read<QuizsCubit>().getQuestionsBySubgroupId();
     super.initState();
   }
 

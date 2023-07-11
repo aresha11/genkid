@@ -49,10 +49,10 @@ class _CoursesState extends State<Courses> {
               cornerRadius: 22.0,
               fontSize: 12.sp,
               minHeight: 7.h,
-              activeBgColor: const [Colors.white],
+              activeBgColor: const [Color(0xff210228FF),Color(0xff40002EFF)],
               //activeBgColors: [[AppColors.primaryColor], [AppColors.primaryColor]],
               activeFgColor: Colors.white,
-              inactiveBgColor: const Color(0xffF4F4F5),
+              inactiveBgColor: Colors.transparent,
               inactiveFgColor: const Color(0xff6B7280),
               initialLabelIndex:
               context.read<CoursesCubit>().currentIndex,

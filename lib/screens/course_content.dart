@@ -6,6 +6,8 @@ import 'package:genkid/screens/video_content.dart';
 
 import 'package:sizer/sizer.dart';
 
+import '../cubit/Quizs_cubit/quizs_cubit.dart';
+
 class CourseContent extends StatefulWidget {
   CourseContent({Key? key, required this.index, required this.playlistLevel})
       : super(key: key);
@@ -19,11 +21,13 @@ class CourseContent extends StatefulWidget {
 class _CourseContentState extends State<CourseContent> {
   @override
   void initState() {
+    context.read<QuizsCubit>().changVideoId();
     super.initState();
   }
 
   var data;
-  int? video;
+
+  //int? video;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +36,11 @@ class _CourseContentState extends State<CourseContent> {
     data = context.read<CoursesCubit>().corseContentModel.data;
     double _w = MediaQuery.of(context).size.width;
     double _h = MediaQuery.of(context).size.height;
+    var playListModel = widget.playlistLevel == 1
+        ? context.read<CoursesCubit>().playlistsModel1.data
+        : widget.playlistLevel == 2
+            ? context.read<CoursesCubit>().playlistsModel2.data
+            : context.read<CoursesCubit>().playlistsModel3.data;
 
     return BlocConsumer<CoursesCubit, CoursesState>(
       listener: (context, state) {
@@ -49,14 +58,9 @@ class _CourseContentState extends State<CourseContent> {
                 decoration: BoxDecoration(
                     color: Colors.black,
                     image: DecorationImage(
-                      image: NetworkImage(context
-                          .read<CoursesCubit>()
-                          .playlistsModel
-                          .data[widget.index]
-                          .photo
-                          .toString()),
-                    )
-                ),
+                      image: NetworkImage(
+                          playListModel[widget.index].photo.toString()),
+                    )),
                 // child: Row(
                 //   children: [
                 //     IconButton(
@@ -95,153 +99,165 @@ class _CourseContentState extends State<CourseContent> {
                                     color: Colors.black,
                                   ),
                                 )
-                              : Column(
-                                  children: [
-                                    (index == 0 ||
-                                                SharedPreference.get(
-                                                            key: "videoId")
-                                                        .toString() ==
-                                                    "null"
-                                            ? index == 0
-                                            : index <=
-                                                SharedPreference.get(
-                                                    key: "videoId"))
-                                        ? InkWell(
-                                            onTap: () {
-                                              context
-                                                      .read<CoursesCubit>()
-                                                      .currentVideo =
+                              : BlocConsumer<QuizsCubit, QuizsState>(
+                                  listener: (context, state) {
+                                    // TODO: implement listener
+                                  },
+                                  builder: (context, state) {
+                                    return Column(
+                                      children: [
+                                        (index == 0 ||
+                                                index <=
+                                                    context
+                                                        .read<QuizsCubit>()
+                                                        .videoId)
+                                            ? InkWell(
+                                                onTap: () {
                                                   context
-                                                      .read<CoursesCubit>()
-                                                      .corseContentModel
-                                                      .data[index]
-                                                      .video;
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        VideoContent(
-                                                            id: context
-                                                                .read<
-                                                                    CoursesCubit>()
-                                                                .playlistsModel
-                                                                .data[widget
-                                                                    .index]
-                                                                .id
-                                                                .toString(),
-                                                            index: index),
-                                                  ));
-                                            },
-                                            child: Container(
-                                              height: _w / 4,
-                                              decoration: BoxDecoration(
-                                                color: const Color(0xff5F40D1),
-                                                borderRadius: (index == 0)
-                                                    ? const BorderRadius.only(
-                                                        topLeft:
-                                                            Radius.circular(25),
-                                                        topRight:
-                                                            Radius.circular(25))
-                                                    : BorderRadius.zero,
-                                              ),
-                                              child: Row(
-                                                children: [
-                                                  const SizedBox(
-                                                    width: 15,
+                                                          .read<CoursesCubit>()
+                                                          .currentVideo =
+                                                      context
+                                                          .read<CoursesCubit>()
+                                                          .corseContentModel
+                                                          .data[index]
+                                                          .video;
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            VideoContent(
+                                                                id: playListModel[
+                                                                        widget
+                                                                            .index]
+                                                                    .id
+                                                                    .toString(),
+                                                                index: index),
+                                                      ));
+                                                },
+                                                child: Container(
+                                                  height: _w / 4,
+                                                  decoration: BoxDecoration(
+                                                    color:
+                                                        const Color(0xff5F40D1),
+                                                    borderRadius: (index == 0)
+                                                        ? const BorderRadius
+                                                                .only(
+                                                            topLeft:
+                                                                Radius.circular(
+                                                                    25),
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    25))
+                                                        : BorderRadius.zero,
                                                   ),
-                                                  CircleAvatar(
-                                                      radius: 25,
-                                                      backgroundColor: Colors
-                                                          .white
-                                                          .withOpacity(0.3),
-                                                      child: const Icon(
-                                                        Icons
-                                                            .play_circle_fill_outlined,
-                                                        size: 38,
-                                                      )),
-                                                  const SizedBox(
-                                                    width: 15,
-                                                  ),
-                                                  Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
+                                                  child: Row(
                                                     children: [
-                                                      Text('video ${index + 1}',
-                                                          style:
-                                                              const TextStyle(
+                                                      const SizedBox(
+                                                        width: 15,
+                                                      ),
+                                                      CircleAvatar(
+                                                          radius: 25,
+                                                          backgroundColor:
+                                                              Colors.white
+                                                                  .withOpacity(
+                                                                      0.3),
+                                                          child: const Icon(
+                                                            Icons
+                                                                .play_circle_fill_outlined,
+                                                            size: 38,
+                                                          )),
+                                                      const SizedBox(
+                                                        width: 15,
+                                                      ),
+                                                      Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Text(
+                                                              'video ${index + 1}',
+                                                              style: const TextStyle(
                                                                   color: Colors
                                                                       .white)),
-                                                      Text(
-                                                          '${context.read<CoursesCubit>().corseContentModel.data[index].title}',
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.white,
-                                                              fontSize: 18)),
-                                                      //  Text('${context.read<CoursesCubit>().corseContentModel.data[index].autherName}',style: TextStyle(color: Colors.white))
+                                                          Text(
+                                                              '${context.read<CoursesCubit>().corseContentModel.data[index].title}',
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize:
+                                                                      18)),
+                                                          //  Text('${context.read<CoursesCubit>().corseContentModel.data[index].autherName}',style: TextStyle(color: Colors.white))
+                                                        ],
+                                                      ),
                                                     ],
                                                   ),
-                                                ],
-                                              ),
-                                            ),
-                                          )
-                                        : Container(
-                                            height: _w / 4,
-                                            decoration: BoxDecoration(
-                                              color: Colors.grey,
-                                              borderRadius: (index == 0)
-                                                  ? const BorderRadius.only(
-                                                      topLeft:
-                                                          Radius.circular(25),
-                                                      topRight:
-                                                          Radius.circular(25))
-                                                  : BorderRadius.zero,
-                                            ),
-                                            child: Row(
-                                              children: [
-                                                const SizedBox(
-                                                  width: 15,
                                                 ),
-                                                CircleAvatar(
-                                                    radius: 25,
-                                                    backgroundColor: Colors
-                                                        .white
-                                                        .withOpacity(0.3),
-                                                    child: const Icon(
-                                                      Icons
-                                                          .play_circle_fill_outlined,
-                                                      size: 38,
-                                                    )),
-                                                const SizedBox(
-                                                  width: 15,
+                                              )
+                                            : Container(
+                                                height: _w / 4,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.grey,
+                                                  borderRadius: (index == 0)
+                                                      ? const BorderRadius.only(
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  25),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  25))
+                                                      : BorderRadius.zero,
                                                 ),
-                                                Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
+                                                child: Row(
                                                   children: [
-                                                    Text('video ${index + 1}',
-                                                        style: const TextStyle(
-                                                            color:
-                                                                Colors.white)),
-                                                    Text(
-                                                        '${context.read<CoursesCubit>().corseContentModel.data[index].title}',
-                                                        style: TextStyle(
-                                                            color: Colors.white,
-                                                            fontSize: 18)),
-                                                    //Text('${context.read<CoursesCubit>().corseContentModel.data[index].autherName}',style: TextStyle(color: Colors.white))
+                                                    const SizedBox(
+                                                      width: 15,
+                                                    ),
+                                                    CircleAvatar(
+                                                        radius: 25,
+                                                        backgroundColor: Colors
+                                                            .white
+                                                            .withOpacity(0.3),
+                                                        child: const Icon(
+                                                          Icons
+                                                              .play_circle_fill_outlined,
+                                                          size: 38,
+                                                        )),
+                                                    const SizedBox(
+                                                      width: 15,
+                                                    ),
+                                                    Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Text(
+                                                            'video ${index + 1}',
+                                                            style:
+                                                                const TextStyle(
+                                                                    color: Colors
+                                                                        .white)),
+                                                        Text(
+                                                            '${context.read<CoursesCubit>().corseContentModel.data[index].title}',
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 18)),
+                                                        //Text('${context.read<CoursesCubit>().corseContentModel.data[index].autherName}',style: TextStyle(color: Colors.white))
+                                                      ],
+                                                    ),
                                                   ],
                                                 ),
-                                              ],
-                                            ),
-                                          ),
-                                    const Divider(
-                                      height: 1,
-                                      thickness: 0.2,
-                                      color: Colors.black,
-                                      indent: 20,
-                                      endIndent: 20,
-                                    )
-                                  ],
+                                              ),
+                                        const Divider(
+                                          height: 1,
+                                          thickness: 0.2,
+                                          color: Colors.black,
+                                          indent: 20,
+                                          endIndent: 20,
+                                        )
+                                      ],
+                                    );
+                                  },
                                 )),
                     ),
                   )

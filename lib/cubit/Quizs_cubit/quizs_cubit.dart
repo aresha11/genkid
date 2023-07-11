@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:genkid/config/data/local/shared_preference.dart';
 import 'package:genkid/config/data/shared/dio_helper.dart';
 import 'package:genkid/config/models/questions_model.dart';
-import 'package:genkid/screens/video_content.dart';
 import 'package:meta/meta.dart';
 
 import '../../config/models/quiz_model.dart';
@@ -29,6 +28,14 @@ class QuizsCubit extends Cubit<QuizsState> {
   int index = 0;
 
   //bool quizFinish=false;
+
+  int videoId=SharedPreference.get(key: "videoId").toString()=="null"?0:SharedPreference.get(key: "videoId");
+
+  changVideoId(){
+  videoId=SharedPreference.get(key: "videoId").toString()=="null"?0:SharedPreference.get(key: "videoId");
+  emit(ChangeVideoIdSuccessState());
+  }
+
 
   changeIndex(context) {
     if (index < questionsModel.data.length - 1) {
@@ -65,14 +72,14 @@ class QuizsCubit extends Cubit<QuizsState> {
   }
 
 
-  void getQuestionsBySubgroupId() async {
+  void getQuestionsBySubgroupId({required String subgroupId}) async {
     print( SharedPreference.get(key: "htmlQuizId"));
     print( SharedPreference.get(key: "scratchQuizId"));
     print(SharedPreference.get(key: "quizType"));
     //data.clear();
     emit(LoadingQuestionsState());
     await dioHelper.getData(
-      url: "http://aresha11-001-site1.ftempurl.com/api/Questions/GetBySubgroubId/${SharedPreference.get(key: "quizType").toString()=="html"?SharedPreference.get(key: "htmlQuizId"):SharedPreference.get(key: "scratchQuizId")}",
+      url: "http://aresha11-001-site1.ftempurl.com/api/Questions/GetBySubgroubId/$subgroupId",
     ).then((value) {
       print(SharedPreference.get(key: "htmlQuizId"));
       if (value.statusCode == 200) {

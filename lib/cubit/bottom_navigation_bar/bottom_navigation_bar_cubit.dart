@@ -16,8 +16,8 @@ class BottomNavigationBarCubit extends Cubit<BottomNavigationBarState> {
   int currentIndex=0;
   List<Widget>screens=const[
     HomeScreen(),
-    SettingScreen(),
     ChatBoot(),
+    SettingScreen(),
     ProfileScreen(),
   ];
 
