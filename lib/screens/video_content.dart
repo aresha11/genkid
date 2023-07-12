@@ -93,7 +93,7 @@ class _VideoContentState extends State<VideoContent> {
             }
             break;
            case "5":
-             int htmlQuizId=SharedPreference.get(key: "Quiz${widget.id}").toString()=="null"?17:SharedPreference.get(key: "Quiz${widget.id}")+1;
+             int htmlQuizId=SharedPreference.get(key: "Quiz${widget.id}").toString()=="null"?27:SharedPreference.get(key: "Quiz${widget.id}")+1;
             SharedPreference.removeData(key: "Quiz${widget.id}");
             await SharedPreference.put(key: "Quiz${widget.id}", value: htmlQuizId).then((value) {
               context.read<QuizsCubit>().getQuestionsBySubgroupId(subgroupId: SharedPreference.get(key: "Quiz${widget.id}"));
@@ -106,7 +106,7 @@ class _VideoContentState extends State<VideoContent> {
 
 
            case "6":
-             int htmlQuizId=SharedPreference.get(key: "Quiz${widget.id}").toString()=="null"?17:SharedPreference.get(key: "Quiz${widget.id}")+1;
+             int htmlQuizId=SharedPreference.get(key: "Quiz${widget.id}").toString()=="null"?32:SharedPreference.get(key: "Quiz${widget.id}")+1;
              SharedPreference.removeData(key: "Quiz${widget.id}");
              await SharedPreference.put(key: "Quiz${widget.id}", value: htmlQuizId).then((value) {
                context.read<QuizsCubit>().getQuestionsBySubgroupId(subgroupId: SharedPreference.get(key: "Quiz${widget.id}"));
@@ -119,7 +119,7 @@ class _VideoContentState extends State<VideoContent> {
 
 
            case "7":
-             int htmlQuizId=SharedPreference.get(key: "Quiz${widget.id}").toString()=="null"?17:SharedPreference.get(key: "Quiz${widget.id}")+1;
+             int htmlQuizId=SharedPreference.get(key: "Quiz${widget.id}").toString()=="null"?37:SharedPreference.get(key: "Quiz${widget.id}")+1;
              SharedPreference.removeData(key: "Quiz${widget.id}");
              await SharedPreference.put(key: "Quiz${widget.id}", value: htmlQuizId).then((value) {
                context.read<QuizsCubit>().getQuestionsBySubgroupId(subgroupId: SharedPreference.get(key: "Quiz${widget.id}"));
@@ -131,7 +131,7 @@ class _VideoContentState extends State<VideoContent> {
              break;
 
            case "8":
-             int htmlQuizId=SharedPreference.get(key: "Quiz${widget.id}").toString()=="null"?17:SharedPreference.get(key: "Quiz${widget.id}")+1;
+             int htmlQuizId=SharedPreference.get(key: "Quiz${widget.id}").toString()=="null"?42:SharedPreference.get(key: "Quiz${widget.id}")+1;
              SharedPreference.removeData(key: "Quiz${widget.id}");
              await SharedPreference.put(key: "Quiz${widget.id}", value: htmlQuizId).then((value) {
                context.read<QuizsCubit>().getQuestionsBySubgroupId(subgroupId: SharedPreference.get(key: "Quiz${widget.id}"));
@@ -142,7 +142,7 @@ class _VideoContentState extends State<VideoContent> {
              break;
 
            case "9":
-             int htmlQuizId=SharedPreference.get(key: "Quiz${widget.id}").toString()=="null"?17:SharedPreference.get(key: "Quiz${widget.id}")+1;
+             int htmlQuizId=SharedPreference.get(key: "Quiz${widget.id}").toString()=="null"?47:SharedPreference.get(key: "Quiz${widget.id}")+1;
              SharedPreference.removeData(key: "Quiz${widget.id}");
              await SharedPreference.put(key: "Quiz${widget.id}", value: htmlQuizId).then((value) {
                context.read<QuizsCubit>().getQuestionsBySubgroupId(subgroupId: SharedPreference.get(key: "Quiz${widget.id}"));

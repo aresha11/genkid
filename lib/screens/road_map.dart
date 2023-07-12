@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:genkid/config/utility/app_images.dart';
 import 'package:sizer/sizer.dart';
+
+import 'detailed_roadMap.dart';
+
+
 class RoadMap extends StatelessWidget {
   const RoadMap({Key? key}) : super(key: key);
 
@@ -20,39 +24,44 @@ class RoadMap extends StatelessWidget {
                 : MainAxisAlignment.end,
             children: [
               (index % 2 == 0)
-                  ? Container(
+                  ? InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => DetailedRoadMap(),));
+                },
+                    child: Container(
                 alignment: Alignment.center,
                 width: 37.w,
                 decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.3),
-                    borderRadius: BorderRadius.circular(25)),
+                      color: Colors.white.withOpacity(0.3),
+                      borderRadius: BorderRadius.circular(25)),
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 height: 23.h,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                            alignment: Alignment.center,
-                            height:
-                            MediaQuery.of(context).size.height * 0.1,
-                            child: Image.asset('images/course$index.png'))
-                      ],
-                    ),
-                    Column(
-                      children: const [
-                        Text(
-                          'course name',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    )
-                  ],
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                              alignment: Alignment.center,
+                              height:
+                              MediaQuery.of(context).size.height * 0.1,
+                              child: Image.asset('images/course$index.png'))
+                        ],
+                      ),
+                      Column(
+                        children: const [
+                          Text(
+                            'course name',
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      )
+                    ],
                 ),
-              )
+              ),
+                  )
                   : const Expanded(
                   child: Text('links to material \n we prefer',
                       style: TextStyle(
@@ -65,37 +74,42 @@ class RoadMap extends StatelessWidget {
                   child: Text('links to material\n we prefer',
                       style: TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 16),textAlign: TextAlign.center,))
-                  : Container(
+                  : InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => DetailedRoadMap(),));
+                },
+                    child: Container(
                 width: 35.w,
                 decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.3),
-                    borderRadius: BorderRadius.circular(25)),
+                      color: Colors.white.withOpacity(0.3),
+                      borderRadius: BorderRadius.circular(25)),
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 height: 23.h,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                            alignment: Alignment.center,
-                            height:
-                            MediaQuery.of(context).size.height * 0.1,
-                            child: Image.asset('images/course$index.png'))
-                      ],
-                    ),
-                    Column(
-                      children: const [
-                        Text(
-                          'course name',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    )
-                  ],
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                              alignment: Alignment.center,
+                              height:
+                              MediaQuery.of(context).size.height * 0.1,
+                              child: Image.asset('images/course$index.png'))
+                        ],
+                      ),
+                      Column(
+                        children: const [
+                          Text(
+                            'course name',
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      )
+                    ],
                 ),
               ),
+                  ),
             ],
           ),
         ),

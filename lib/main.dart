@@ -8,6 +8,7 @@ import 'package:genkid/cubit/courses_cubit/courses_cubit.dart';
 import 'package:genkid/cubit/html_cubit/html_cubit.dart';
 import 'package:genkid/cubit/posts_cubit/posts_cubit.dart';
 import 'package:genkid/cubit/quesitions_cubit/quesitions_cubit.dart';
+import 'package:genkid/screens/detailed_roadMap.dart';
 import 'package:sizer/sizer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -63,6 +64,7 @@ class MyApp extends StatelessWidget {
             onGenerateRoute: onGenerate,
 
             initialRoute: AppRoutes.splashScreenRoute,
+
           ),
         );
 

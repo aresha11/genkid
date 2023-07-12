@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:genkid/config/data/local/shared_preference.dart';
 import 'package:genkid/cubit/Quizs_cubit/quizs_cubit.dart';
+import 'package:genkid/screens/home_layout_screen.dart';
 
 
 
@@ -22,7 +23,11 @@ class _MyHomePageState extends State<QuizFinish> {
     return Scaffold(
         backgroundColor: Colors.teal,
         body: Container(
-
+decoration: const BoxDecoration(
+  image: DecorationImage(
+    image: AssetImage('images/Background.png'),fit:BoxFit.cover
+  )
+),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -64,16 +69,21 @@ class _MyHomePageState extends State<QuizFinish> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: Colors.cyan,
-                        borderRadius: BorderRadius.circular(25),
-                        border: Border.all(color: Colors.black)
+                  InkWell(
+                    onTap: (){
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeLayoutScreen(),));
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: Colors.cyan,
+                          borderRadius: BorderRadius.circular(25),
+                          border: Border.all(color: Colors.black)
+                      ),
+                      height: 80,
+                      width: 150,
+                      child: const Text('back home',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold,fontSize: 18)),
                     ),
-                    height: 80,
-                    width: 150,
-                    child: const Text('back home',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold,fontSize: 18)),
                   ),
                   InkWell(
                     onTap: (){
@@ -90,7 +100,7 @@ class _MyHomePageState extends State<QuizFinish> {
                       ),
                       height: 80,
                       width: 150,
-                      child: Text((rightQuestion<3)?'try again':'go to next video',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold,fontSize: 18)),
+                      child: Text('Go to next video',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold,fontSize: 18)),
                     ),
                   ),
 
