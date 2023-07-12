@@ -6,6 +6,8 @@ import 'package:genkid/config/utility/routes.dart';
 import 'package:genkid/cubit/courses_cubit/courses_cubit.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+import '../cubit/Quizs_cubit/quizs_cubit.dart';
+
 class VideoContent extends StatefulWidget {
   VideoContent({required this.id,required this.index});
   String id;
@@ -43,24 +45,135 @@ class _VideoContentState extends State<VideoContent> {
       //Video has ended
        if(z==true){
          print("true");
-        if(widget.id=="2"){
-          int htmlQuizId=SharedPreference.get(key: "htmlQuizId").toString()=="null"?17:SharedPreference.get(key: "htmlQuizId")+1;
-          SharedPreference.removeData(key: "htmlQuizId");
-          await SharedPreference.put(key: "htmlQuizId", value: htmlQuizId).then((value) {
-            Navigator.pushReplacementNamed(context, AppRoutes.quizSplashScreenRoute);
-          });
-          SharedPreference.put(key: "quizType", value: "html");
-          SharedPreference.put(key: "quiz", value: true);
-        }else{
-          int scratchQuizId =SharedPreference.get(key: "scratchQuizId").toString()=="null"?22:SharedPreference.get(key: "scratchQuizId")+1;
-          SharedPreference.removeData(key: "scratchQuizId");
-          await SharedPreference.put(key: "scratchQuizId", value: scratchQuizId).then((value) {
-            Navigator.pushReplacementNamed(context, AppRoutes.quizSplashScreenRoute);
-          });
+         switch(widget.id){
+           case "1":
+             {
+              int scratchQuizId =
+                  SharedPreference.get(key: "Quiz${widget.id}").toString() ==
+                          "null"
+                      ? 22
+                      : SharedPreference.get(key: "Quiz${widget.id}") + 1;
+              SharedPreference.removeData(key: "Quiz${widget.id}");
+              await SharedPreference.put(
+                      key: "Quiz${widget.id}", value: scratchQuizId)
+                  .then((value) {
+                context.read<QuizsCubit>().getQuestionsBySubgroupId(
+                    subgroupId: SharedPreference.get(key: "Quiz${widget.id}"));
+                SharedPreference.put(key: "quizType", value: "scratch");
+                SharedPreference.put(key: "quiz", value: true);
+                Navigator.pushReplacementNamed(
+                    context, AppRoutes.quizSplashScreenRoute);
+              });
 
-          SharedPreference.put(key: "quizType", value: "scratch");
-          SharedPreference.put(key: "quiz", value: true);
-       }
+            }
+
+            break;
+
+           case "2":
+             {
+              int htmlQuizId =
+                  SharedPreference.get(key: "Quiz${widget.id}").toString() ==
+                          "null"
+                      ? 17
+                      : SharedPreference.get(key: "Quiz${widget.id}") + 1;
+              SharedPreference.removeData(key: "Quiz${widget.id}");
+              await SharedPreference.put(
+                      key: "Quiz${widget.id}", value: htmlQuizId)
+                  .then((value) {
+                context.read<QuizsCubit>().getQuestionsBySubgroupId(
+                    subgroupId: SharedPreference.get(key: "Quiz${widget.id}").toString());
+                SharedPreference.put(key: "quizType", value: "html");
+                SharedPreference.put(key: "quiz", value: true);
+                Navigator.pushReplacementNamed(
+                    context, AppRoutes.quizSplashScreenRoute);
+              });
+
+            }
+            break;
+           case "5":
+             int htmlQuizId=SharedPreference.get(key: "Quiz${widget.id}").toString()=="null"?17:SharedPreference.get(key: "Quiz${widget.id}")+1;
+            SharedPreference.removeData(key: "Quiz${widget.id}");
+            await SharedPreference.put(key: "Quiz${widget.id}", value: htmlQuizId).then((value) {
+              context.read<QuizsCubit>().getQuestionsBySubgroupId(subgroupId: SharedPreference.get(key: "Quiz${widget.id}"));
+              SharedPreference.put(key: "quizType", value: "jwt");
+              SharedPreference.put(key: "quiz", value: true);
+              Navigator.pushReplacementNamed(context, AppRoutes.quizSplashScreenRoute);
+            });
+
+            break;
+
+
+           case "6":
+             int htmlQuizId=SharedPreference.get(key: "Quiz${widget.id}").toString()=="null"?17:SharedPreference.get(key: "Quiz${widget.id}")+1;
+             SharedPreference.removeData(key: "Quiz${widget.id}");
+             await SharedPreference.put(key: "Quiz${widget.id}", value: htmlQuizId).then((value) {
+               context.read<QuizsCubit>().getQuestionsBySubgroupId(subgroupId: SharedPreference.get(key: "Quiz${widget.id}"));
+               SharedPreference.put(key: "quizType", value: "entity");
+               SharedPreference.put(key: "quiz", value: true);
+               Navigator.pushReplacementNamed(context, AppRoutes.quizSplashScreenRoute);
+             });
+
+             break;
+
+
+           case "7":
+             int htmlQuizId=SharedPreference.get(key: "Quiz${widget.id}").toString()=="null"?17:SharedPreference.get(key: "Quiz${widget.id}")+1;
+             SharedPreference.removeData(key: "Quiz${widget.id}");
+             await SharedPreference.put(key: "Quiz${widget.id}", value: htmlQuizId).then((value) {
+               context.read<QuizsCubit>().getQuestionsBySubgroupId(subgroupId: SharedPreference.get(key: "Quiz${widget.id}"));
+               SharedPreference.put(key: "quizType", value: "c#");
+               SharedPreference.put(key: "quiz", value: true);
+               Navigator.pushReplacementNamed(context, AppRoutes.quizSplashScreenRoute);
+             });
+
+             break;
+
+           case "8":
+             int htmlQuizId=SharedPreference.get(key: "Quiz${widget.id}").toString()=="null"?17:SharedPreference.get(key: "Quiz${widget.id}")+1;
+             SharedPreference.removeData(key: "Quiz${widget.id}");
+             await SharedPreference.put(key: "Quiz${widget.id}", value: htmlQuizId).then((value) {
+               context.read<QuizsCubit>().getQuestionsBySubgroupId(subgroupId: SharedPreference.get(key: "Quiz${widget.id}"));
+               SharedPreference.put(key: "quizType", value: "flutter");
+               SharedPreference.put(key: "quiz", value: true);
+               Navigator.pushReplacementNamed(context, AppRoutes.quizSplashScreenRoute);
+             });
+             break;
+
+           case "9":
+             int htmlQuizId=SharedPreference.get(key: "Quiz${widget.id}").toString()=="null"?17:SharedPreference.get(key: "Quiz${widget.id}")+1;
+             SharedPreference.removeData(key: "Quiz${widget.id}");
+             await SharedPreference.put(key: "Quiz${widget.id}", value: htmlQuizId).then((value) {
+               context.read<QuizsCubit>().getQuestionsBySubgroupId(subgroupId: SharedPreference.get(key: "Quiz${widget.id}"));
+               SharedPreference.put(key: "quizType", value: "android");
+               SharedPreference.put(key: "quiz", value: true);
+               Navigator.pushReplacementNamed(context, AppRoutes.quizSplashScreenRoute);
+             });
+             break;
+
+           default:
+             SharedPreference.put(key: "quiz", value: true);
+             Navigator.pushReplacementNamed(context, AppRoutes.quizSplashScreenRoute);
+         }
+
+       //  if(widget.id=="2"){
+       //    int htmlQuizId=SharedPreference.get(key: "htmlQuizId").toString()=="null"?17:SharedPreference.get(key: "htmlQuizId")+1;
+       //    SharedPreference.removeData(key: "htmlQuizId");
+       //    await SharedPreference.put(key: "htmlQuizId", value: htmlQuizId).then((value) {
+       //      context.read<QuizsCubit>().getQuestionsBySubgroupId();
+       //      Navigator.pushReplacementNamed(context, AppRoutes.quizSplashScreenRoute);
+       //    });
+       //    SharedPreference.put(key: "quizType", value: "html");
+       //    SharedPreference.put(key: "quiz", value: true);
+       //  }else{
+       //    int scratchQuizId =SharedPreference.get(key: "scratchQuizId").toString()=="null"?22:SharedPreference.get(key: "scratchQuizId")+1;
+       //    SharedPreference.removeData(key: "scratchQuizId");
+       //    await SharedPreference.put(key: "scratchQuizId", value: scratchQuizId).then((value) {
+       //      Navigator.pushReplacementNamed(context, AppRoutes.quizSplashScreenRoute);
+       //    });
+       //
+       //    SharedPreference.put(key: "quizType", value: "scratch");
+       //    SharedPreference.put(key: "quiz", value: true);
+       // }
       }else{
          SharedPreference.put(key: "quiz", value: true);
          Navigator.pushReplacementNamed(context, AppRoutes.quizSplashScreenRoute);

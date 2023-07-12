@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:genkid/config/data/local/shared_preference.dart';
+import 'package:genkid/cubit/Quizs_cubit/quizs_cubit.dart';
 
 
 
 
 class QuizFinish extends StatefulWidget {
-  const QuizFinish();
+  const QuizFinish({Key? key}) : super(key: key);
 
   @override
   State<QuizFinish> createState() => _MyHomePageState();
@@ -13,7 +16,7 @@ class QuizFinish extends StatefulWidget {
 
 class _MyHomePageState extends State<QuizFinish> {
 
-  int rightQuestion=4;
+  int rightQuestion=SharedPreference.get(key: "correct");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +27,7 @@ class _MyHomePageState extends State<QuizFinish> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Center(child: Text('your result',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold,fontSize: 30))),
+              const Center(child: Text('your result',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold,fontSize: 30))),
               Center(
                 child: Container(
                   width: MediaQuery.of(context).size.width*(rightQuestion/10),
@@ -35,14 +38,14 @@ class _MyHomePageState extends State<QuizFinish> {
                     itemBuilder: (context,index)=>FadeTransitionExample(),),
                 ),
               ),
-              SizedBox(height: 30,),
+              const SizedBox(height: 30,),
               Center(
                 child:Stack(
                   children: [
                     Positioned(child: Container(
                       height: MediaQuery.of(context).size.width*0.4,
                       width: MediaQuery.of(context).size.width*0.4,
-                      child:Center(child: Text('$rightQuestion/5',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),),
+                      child:Center(child: Text('$rightQuestion/5',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),),
                     ),),
                     Container(
                       height: MediaQuery.of(context).size.width*0.4,
@@ -70,18 +73,25 @@ class _MyHomePageState extends State<QuizFinish> {
                     ),
                     height: 80,
                     width: 150,
-                    child: Text('back home',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold,fontSize: 18)),
+                    child: const Text('back home',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold,fontSize: 18)),
                   ),
-                  Container(
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: Colors.cyan,
-                        borderRadius: BorderRadius.circular(25),
-                        border: Border.all(color: Colors.black)
+                  InkWell(
+                    onTap: (){
+                      context.read<QuizsCubit>().changVideoId();
+                      Navigator.pop(context);
+                      SharedPreference.put(key: "correct", value: 0);
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: Colors.cyan,
+                          borderRadius: BorderRadius.circular(25),
+                          border: Border.all(color: Colors.black)
+                      ),
+                      height: 80,
+                      width: 150,
+                      child: Text((rightQuestion<3)?'try again':'go to next video',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold,fontSize: 18)),
                     ),
-                    height: 80,
-                    width: 150,
-                    child: Text((rightQuestion<3)?'try again':'go to next video',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold,fontSize: 18)),
                   ),
 
                 ],

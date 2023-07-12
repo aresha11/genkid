@@ -16,9 +16,9 @@ class _HomeLayoutScreenState extends State<HomeLayoutScreen> {
 
   @override
   void initState() {
+    context.read<BottomNavigationBarCubit>().currentIndex=0;
     // TODO: implement initState
     super.initState();
-
     context.read<CoursesCubit>().getAllCourses();
     //context.read<GetUserInformationCubit>().getUserInformation();
   }
@@ -48,8 +48,8 @@ class _HomeLayoutScreenState extends State<HomeLayoutScreen> {
             ),
             icons: [
               FluidNavBarIcon(icon: Icons.home),
-              FluidNavBarIcon(icon: Icons.settings),
               FluidNavBarIcon(icon: Icons.report_problem),
+              FluidNavBarIcon(icon: Icons.settings),
               FluidNavBarIcon(icon: Icons.person),
             ],
           ),
