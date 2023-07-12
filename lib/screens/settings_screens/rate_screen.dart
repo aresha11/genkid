@@ -10,9 +10,9 @@ class RateScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xff1D5C92),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
         leading: IconButton(
@@ -21,7 +21,7 @@ class RateScreen extends StatelessWidget {
           },
           icon: const Icon(Icons.arrow_back_outlined),
         ),
-        title: Text("Rate App",style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.w300,color: Colors.black),),
+        title: Text("Rate App",style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.w300,color: Colors.white),),
       ),
       body: Stack(
         children: [
@@ -38,10 +38,9 @@ class RateScreen extends StatelessWidget {
               child: EmojiRatingBar(
                   rating: 2,
                   onRateChange: (rating) {
-                    print(rating);
                   },
                   isReadOnly: false,
-                  spacing: 10,
+                  spacing: 1.w,
                   size: 40,
                   selectedSize: 70,
                   isShowTitle: true,

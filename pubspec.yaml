@@ -65,6 +65,8 @@ dependencies:
   toggle_switch:
   conditional_builder_null_safety:
   cached_network_image: ^3.2.3
+  rate: ^0.0.2
+  custom_sidemenu: ^0.0.3
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -61,23 +61,6 @@ class _CourseContentState extends State<CourseContent> {
                       image: NetworkImage(
                           playListModel[widget.index].photo.toString()),
                     )),
-                // child: Row(
-                //   children: [
-                //     IconButton(
-                //         onPressed: () {
-                //           Navigator.pop(context);
-                //         },
-                //         icon: const Icon(Icons.arrow_back_outlined)),
-                //     SizedBox(
-                //       width: 23.w,
-                //     ),
-                //     Text(
-                //       '${context.read<CoursesCubit>().playlistsModel.data[widget.index].name}',
-                //       style:
-                //           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                //     ),
-                //   ],
-                // ),
               ),
               Column(
                 children: [

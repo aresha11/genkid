@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:genkid/config/data/local/shared_preference.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
-
 import '../../../config/utility/routes.dart';
 
 part 'login_state.dart';

@@ -5,6 +5,8 @@ import 'package:genkid/cubit/auth/get_user_information_cubit/get_user_informatio
 import 'package:genkid/cubit/auth/login_cubit/login_cubit.dart';
 import 'package:genkid/cubit/bottom_navigation_bar/bottom_navigation_bar_cubit.dart';
 import 'package:genkid/cubit/courses_cubit/courses_cubit.dart';
+import 'package:genkid/cubit/html_cubit/html_cubit.dart';
+import 'package:genkid/cubit/posts_cubit/posts_cubit.dart';
 import 'package:genkid/cubit/quesitions_cubit/quesitions_cubit.dart';
 import 'package:genkid/screens/detailed_roadMap.dart';
 import 'package:sizer/sizer.dart';
@@ -42,7 +44,7 @@ class MyApp extends StatelessWidget {
               create: (context) => LoginCubit(),
             ),
             BlocProvider(
-              create: (context) => GetUserInformationCubit(),
+              create: (context) => GetUserInformationCubit()..getUserInformation(),
             ),
             BlocProvider(
               create: (context) => CoursesCubit()..getAllCourses(),
@@ -52,6 +54,12 @@ class MyApp extends StatelessWidget {
             ),
             BlocProvider(
               create: (context) => QuizsCubit(),
+            ),
+            BlocProvider(
+              create: (context) => PostsCubit(),
+            ),
+            BlocProvider(
+              create: (context) => HtmlCubit(),
             ),
           ],
           child: const MaterialApp(
