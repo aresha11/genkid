@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluid_bottom_nav_bar/fluid_bottom_nav_bar.dart';
+import 'package:genkid/cubit/auth/get_user_information_cubit/get_user_information_cubit.dart';
+import 'package:genkid/cubit/posts_cubit/posts_cubit.dart';
 import '../cubit/bottom_navigation_bar/bottom_navigation_bar_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,7 +18,9 @@ class _HomeLayoutScreenState extends State<HomeLayoutScreen> {
 
   @override
   void initState() {
+    context.read<GetUserInformationCubit>().getUserInformation();
     context.read<BottomNavigationBarCubit>().currentIndex=0;
+    context.read<PostsCubit>().getPosts();
     // TODO: implement initState
     super.initState();
     context.read<CoursesCubit>().getAllCourses();
@@ -48,8 +52,8 @@ class _HomeLayoutScreenState extends State<HomeLayoutScreen> {
             ),
             icons: [
               FluidNavBarIcon(icon: Icons.home),
+              FluidNavBarIcon(icon: Icons.post_add),
               FluidNavBarIcon(icon: Icons.report_problem),
-              FluidNavBarIcon(icon: Icons.settings),
               FluidNavBarIcon(icon: Icons.person),
             ],
           ),

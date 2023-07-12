@@ -28,7 +28,7 @@ class _ChatBootState extends State<ChatBoot> {
       appBar: AppBar(
         elevation: 0,
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xff1D5C92),
         flexibleSpace: SafeArea(
           child: Container(
             padding: EdgeInsets.only(right: 16),
@@ -40,7 +40,7 @@ class _ChatBootState extends State<ChatBoot> {
                       margin: EdgeInsets.all(10),
                       child: const Center(
                         child: Text
-                          ("GenkidBot",style: TextStyle( fontSize: 20 ,fontWeight: FontWeight.w600,color: Colors.blueAccent,),
+                          ("GenkidBot",style: TextStyle( fontSize: 20 ,fontWeight: FontWeight.w600,color: Colors.white,),
                         ),
                       )
                   ),

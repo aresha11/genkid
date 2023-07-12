@@ -12,8 +12,8 @@ class CustumAppBar extends StatelessWidget {
     return AppBar(
       centerTitle: true,
       elevation: 0,
-      backgroundColor: Color(0xffC6AEEA),
-      title: Text(title,style:TextStyle(fontSize: 17.sp ),),
+      backgroundColor: Color(0xff1D5C92),
+      title: Text(title,style:TextStyle(fontSize: 17.sp ,color: Colors.white),),
     );
   }
 }

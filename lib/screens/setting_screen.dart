@@ -23,16 +23,16 @@ class SettingScreen extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 2.h,),
+            SizedBox(height: 1.h,),
             Container(
               padding: const EdgeInsets.only(left: 20),
               alignment: Alignment.centerLeft,
               width: double.infinity,
               height: 7.h,
-              color: const Color(0xffE5E7EB),
-              child: PrimaryText(title:"General", size: 20,),
+              color: const Color(0xffC6AEEA),
+              child: PrimaryText(title:"General", size: 15.sp,),
             ),
-            SizedBox(height: 3.h,),
+            SizedBox(height: 2.h,),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -43,39 +43,39 @@ class SettingScreen extends StatelessWidget {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const HtmlWriteCode()));
                        }
                       ),
-                  SizedBox(height: 2.h,),
+                  SizedBox(height: 1.h,),
                   const Divider(
-                    thickness: 2, color: Colors.grey,),
-                  SizedBox(height: 2.h,),
+                    thickness: 1, color: Colors.grey,),
+                  SizedBox(height: 1.h,),
                   ProfileRow(prefixIcon: Icons.photo,
                       title: "Rate",
                       onPress: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const RateScreen(),));
                       }),
-                  SizedBox(height: 2.h,),
+                  SizedBox(height: 1.h,),
                   const Divider(
-                    thickness: 2,),
-                  SizedBox(height: 2.h,),
+                    thickness: 1,),
+                  SizedBox(height: 1.h,),
                   ProfileRow(prefixIcon: Icons.language,
                       title: "language",
                       onPress: () {}),
-                  SizedBox(height: 2.h,),
+                  SizedBox(height: 1.h,),
                   const Divider(
-                    thickness: 2, ),
-                  SizedBox(height: 2.h,),
+                    thickness: 1, ),
+                  SizedBox(height: 1.h,),
                   ProfileRow(prefixIcon: Icons.notifications,
                       title: "notification",
                       onPress: () {}),
-                  SizedBox(height: 2.h,),
+                  SizedBox(height: 1.h,),
                   const Divider(
-                    thickness: 2, ),
-                  SizedBox(height: 2.h,),
+                    thickness: 1, ),
+                  SizedBox(height: 1.h,),
                   ProfileRow(prefixIcon: Icons.security_rounded,
                       title: "loginAndSecurity",
                       onPress: () {}),
-                  SizedBox(height: 2.h,),
+                  SizedBox(height: 1.h,),
                   const Divider(
-                    thickness: 2,),
+                    thickness: 1,),
                 ],
               ),
             ),
@@ -84,11 +84,11 @@ class SettingScreen extends StatelessWidget {
               padding: const EdgeInsets.only(left: 20),
               alignment: Alignment.centerLeft,
               width: double.infinity,
-              height: 7.h,
-              color: const Color(0xffE5E7EB),
-              child: PrimaryText(title: "Others", size: 20,),
+              height: 6.h,
+              color: const Color(0xff8C8DF7),
+              child: PrimaryText(title: "Others", size: 15.sp,),
             ),
-            SizedBox(height: 3.h,),
+            SizedBox(height: 2.h,),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -98,7 +98,7 @@ class SettingScreen extends StatelessWidget {
                     needSuffix: false,),
                   SizedBox(height: 1.h,),
                   const Divider(
-                    thickness: 2, ),
+                    thickness: 1, ),
                   SizedBox(height: 1.h,),
                   ProfileRow(title: "FAQs",
                     onPress: () {
@@ -107,7 +107,7 @@ class SettingScreen extends StatelessWidget {
                     needSuffix: false,),
                   SizedBox(height: 1.h,),
                   const Divider(
-                    thickness: 2, ),
+                    thickness: 1, ),
                   SizedBox(height: 1.h,),
                   ProfileRow(title:"Support Us",
                     onPress: () {
@@ -116,14 +116,14 @@ class SettingScreen extends StatelessWidget {
                     needSuffix: false,),
                   SizedBox(height: 1.h,),
                   const Divider(
-                    thickness: 2, ),
+                    thickness: 1, ),
                   SizedBox(height: 1.h,),
                   ProfileRow(title: "privacyPolicy",
                     onPress: () {},
                     needSuffix: false,),
                   SizedBox(height: 1.h,),
                   const Divider(
-                    thickness: 2,),
+                    thickness: 1,),
                   SizedBox(height: 1.h,),
                   ProfileRow(title: "LogOut",
                     onPress: () {
@@ -171,10 +171,10 @@ class SettingScreen extends StatelessWidget {
                       );
                     },
                     needSuffix: false,),
-                  SizedBox(height: 1.h,),
-                  const Divider(
-                    thickness: 2,),
-                  SizedBox(height: 1.h,),
+                   SizedBox(height: 1.h,),
+                  // const Divider(
+                  //   thickness: 2,),
+                  // SizedBox(height: 1.h,),
                 ],
               ),
             )

@@ -15,15 +15,15 @@ class ProfileRow extends StatelessWidget {
       Row(
       children: [
         CircleAvatar(
-          radius: 30,
+          radius: 5.w,
           child: Icon(prefixIcon),
         ),
         SizedBox(width: 4.w,),
-        Expanded(child: PrimaryText(title: title, size: 18)),
+        Expanded(child: PrimaryText(title: title, size: 12.sp)),
         IconButton(onPressed: ()=>onPress(), icon:const Icon(Icons.arrow_forward)),
       ],
     ):Row(children: [
-      Expanded(child: PrimaryText(title: title, size: 18)),
+      Expanded(child: PrimaryText(title: title, size: 12.sp)),
       IconButton(onPressed: ()=>onPress(), icon:const Icon(Icons.arrow_forward)),
     ],
     );

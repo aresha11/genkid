@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:genkid/screens/chat_bot.dart';
+import 'package:genkid/screens/posts_screen.dart';
 import 'package:genkid/screens/profile_screen.dart';
 import 'package:genkid/screens/setting_screen.dart';
 import 'package:meta/meta.dart';
@@ -16,8 +17,8 @@ class BottomNavigationBarCubit extends Cubit<BottomNavigationBarState> {
   int currentIndex=0;
   List<Widget>screens=const[
     HomeScreen(),
+    PostsScreen(),
     ChatBoot(),
-    SettingScreen(),
     ProfileScreen(),
   ];
 

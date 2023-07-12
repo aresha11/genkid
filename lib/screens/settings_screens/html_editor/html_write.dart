@@ -1,16 +1,32 @@
 import 'package:code_editor/code_editor.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:genkid/cubit/auth/get_user_information_cubit/get_user_information_cubit.dart';
+import 'package:genkid/cubit/html_cubit/html_cubit.dart';
+import 'package:genkid/cubit/posts_cubit/posts_cubit.dart';
 import 'package:genkid/screens/settings_screens/html_editor/html_test.dart';
+import 'package:sizer/sizer.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
-class HtmlWriteCode extends StatelessWidget {
+class HtmlWriteCode extends StatefulWidget {
   const HtmlWriteCode({Key? key}) : super(key: key);
 
   @override
+  State<HtmlWriteCode> createState() => _HtmlWriteCodeState();
+}
+
+class _HtmlWriteCodeState extends State<HtmlWriteCode> {
+
+  @override
+  void initState() {
+    context.read<HtmlCubit>().empty=true;
+    // TODO: implement initState
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     // example of a easier way to write code instead of writing it in a single string
-    List<String> contentOfPage1 = [
-
-    ];
+    List<String> contentOfPage1 = [];
 
     // The files displayed in the navigation bar of the editor.
     // You are not limited.
@@ -30,34 +46,94 @@ class HtmlWriteCode extends StatelessWidget {
       // you can customize the editor as you want
       styleOptions: EditorModelStyleOptions(
         fontSize: 13,
-     placeCursorAtTheEndOnEdit: true,
+        placeCursorAtTheEndOnEdit: true,
       ),
     );
 
     // A custom TextEditingController.
     final myController = TextEditingController(text: 'hello!');
 
-    return Scaffold(
-      appBar: AppBar(title: const Text("code_editor example")),
-      body: SingleChildScrollView(
-        // /!\ important because of the telephone keypad which causes a "RenderFlex overflowed by x pixels on the bottom" error
-        // display the CodeEditor widget
-        child: CodeEditor(
-          model: model, // the model created above, not required since 1.0.0
-          edit: true, // can edit the files? by default true
-          onSubmit: (String? language, String? value) {
-            print(contentOfPage1);
-            print(value?.split("\n"));
-            Future.delayed(Duration(seconds: 4),() {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => HtmlTestCode(contentOfPage1: value!.split("\n")),));
-            },);
-          },
-          disableNavigationbar:
-          false, // hide the navigation bar ? by default false
-          textEditingController:
-          myController, // Provide an optional, custom TextEditingController.
-        ),
-      ),
+    return BlocConsumer<HtmlCubit, HtmlState>(
+      listener: (context, state) {
+        // TODO: implement listener
+      },
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(
+            backgroundColor: const Color(0xff1D5C92),
+            elevation: 0,
+            centerTitle: true,
+            title: Text("Html Editor", style: TextStyle(fontSize: 20.sp,
+                fontWeight: FontWeight.w300,
+                color: Colors.white),),
+          ),
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                SingleChildScrollView(
+                  // /!\ important because of the telephone keypad which causes a "RenderFlex overflowed by x pixels on the bottom" error
+                  // display the CodeEditor widget
+                  child: CodeEditor(
+                    model: model,
+                    // the model created above, not required since 1.0.0
+                    edit: true,
+                    // can edit the files? by default true
+                    onSubmit: (String? language, String? value) async {
+                      await context
+                          .read<HtmlCubit>()
+                          .getCode(code: value!.split("\n"));
+                      //print(value!.split("\n"));
+                      print(context.read<HtmlCubit>().htmlCode);
+                      // print(value?.split("\n"));
+                      // Future.delayed(Duration(seconds: 4),() {
+                      //   Navigator.push(context, MaterialPageRoute(builder: (context) => HtmlTestCode(contentOfPage1: value!.split("\n")),));
+                      // },);
+                    },
+                    disableNavigationbar: false,
+                    // hide the navigation bar ? by default false
+                    textEditingController:
+                        myController, // Provide an optional, custom TextEditingController.
+                  ),
+                ),
+                SizedBox(
+                  height: 2.h,
+                ),
+                SizedBox(
+                  height: 50.h,
+                  child: BlocConsumer<HtmlCubit, HtmlState>(
+                    listener: (context, state) {
+                      // TODO: implement listener
+                    },
+                    builder: (context, state) {
+                      return
+                        context.read<HtmlCubit>().empty==true?
+                            Container()
+                      :
+                        WebView(
+                        initialUrl:
+                            'data:text/html;charset=utf-8,${Uri.encodeComponent(context.read<HtmlCubit>().htmlCode.join("\n"))}',
+                        javascriptMode: JavascriptMode.unrestricted,
+                      );
+                    },
+                  ),
+                ),
+
+
+              ],
+            ),
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: (){
+              if(context.read<HtmlCubit>().htmlCode.isNotEmpty){
+                context.read<PostsCubit>().addPost(userName:context.read<GetUserInformationCubit>().userInformationModel.firstName.toString() , post:context.read<HtmlCubit>().htmlCode.join("\n") );
+                Navigator.pop(context);
+              }
+
+            },
+            child: Text("Share code",textAlign: TextAlign.center,),
+          ),
+        );
+      },
     );
   }
 }

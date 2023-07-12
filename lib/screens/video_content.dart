@@ -54,11 +54,13 @@ class _VideoContentState extends State<VideoContent> {
                       ? 22
                       : SharedPreference.get(key: "Quiz${widget.id}") + 1;
               SharedPreference.removeData(key: "Quiz${widget.id}");
+              print("sss$scratchQuizId");
               await SharedPreference.put(
                       key: "Quiz${widget.id}", value: scratchQuizId)
                   .then((value) {
+                print("sss${SharedPreference.get(key: "Quiz${widget.id}")}");
                 context.read<QuizsCubit>().getQuestionsBySubgroupId(
-                    subgroupId: SharedPreference.get(key: "Quiz${widget.id}"));
+                    subgroupId: SharedPreference.get(key: "Quiz${widget.id}").toString());
                 SharedPreference.put(key: "quizType", value: "scratch");
                 SharedPreference.put(key: "quiz", value: true);
                 Navigator.pushReplacementNamed(
