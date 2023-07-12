@@ -22,7 +22,11 @@ class _MyHomePageState extends State<QuizFinish> {
     return Scaffold(
         backgroundColor: Colors.teal,
         body: Container(
-
+decoration: BoxDecoration(
+  image: DecorationImage(
+    image: AssetImage('images/Background.png'),fit:BoxFit.cover
+  )
+),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
