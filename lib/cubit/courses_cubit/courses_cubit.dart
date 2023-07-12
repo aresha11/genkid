@@ -29,6 +29,12 @@ class CoursesCubit extends Cubit<CoursesState> {
   List data2=[];
   List data3=[];
 
+  int currentIndex=0;
+  changeIndex(index) {
+    currentIndex = index;
+    emit(ChangeIndexState());
+  }
+
 
   void  getAllCourses()async {
 

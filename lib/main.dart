@@ -10,7 +10,6 @@ import 'package:genkid/screens/detailed_roadMap.dart';
 import 'package:sizer/sizer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'config/utility/router.dart';
 import 'cubit/Quizs_cubit/quizs_cubit.dart';
 import 'cubit/auth/register_cubit/register_cubit.dart';
@@ -54,11 +53,10 @@ class MyApp extends StatelessWidget {
           ],
           child: const MaterialApp(
             debugShowCheckedModeBanner: false,
-            // onGenerateRoute: onGenerate,
-            //
-            // initialRoute: AppRoutes.splashScreenRoute,
+            onGenerateRoute: onGenerate,
 
-            home: DetailedRoadMap(),
+            initialRoute: AppRoutes.splashScreenRoute,
+
           ),
         );
 

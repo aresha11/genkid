@@ -11,6 +11,7 @@ class LoadingQuizState extends QuizsState {}
 class GetQuizSuccessState extends QuizsState {}
 class GetQuizFilState extends QuizsState {}
 class ChangeIndexSuccessState extends QuizsState {}
+class ChangeVideoIdSuccessState extends QuizsState {}
 
 
 /// Subgroups

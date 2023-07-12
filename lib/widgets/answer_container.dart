@@ -62,7 +62,7 @@ class _AnswerContainerState extends State<AnswerContainer> {
               }
 
               Future.delayed(
-                Duration(milliseconds: 800),
+                Duration(milliseconds: 500),
                 () {
                   context.read<QuizsCubit>().changeIndex(context);
                   widget.secondContainerColor = const Color(0xff7F5BFF);

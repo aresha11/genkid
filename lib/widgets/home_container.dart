@@ -20,13 +20,14 @@ class HomeContainer extends StatelessWidget {
     return InkWell(
       onTap:(){
         Navigator.pushNamed(context,nextScreen );
-        if(nextScreen==AppRoutes.quizSplashScreenRoute){
-          context.read<QuizsCubit>().getQuestionsBySubgroupId();
-          if(nextScreen==AppRoutes.coursesScreenRoute){
-          //context.read<CoursesCubit>().getCourseById();
-          context.read<CoursesCubit>().getAllCourses();
-        }
-      } },
+        // if(nextScreen==AppRoutes.quizSplashScreenRoute){
+        //   context.read<QuizsCubit>().getQuestionsBySubgroupId();
+        //   if(nextScreen==AppRoutes.coursesScreenRoute){
+        //   //context.read<CoursesCubit>().getCourseById();
+        //   context.read<CoursesCubit>().getAllCourses();
+        // }
+      // }
+      },
       child: Container(
         child: Stack(
           children: [
