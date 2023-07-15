@@ -5,6 +5,7 @@ import 'package:genkid/cubit/auth/get_user_information_cubit/get_user_informatio
 import 'package:genkid/cubit/html_cubit/html_cubit.dart';
 import 'package:genkid/cubit/posts_cubit/posts_cubit.dart';
 import 'package:genkid/screens/settings_screens/html_editor/html_test.dart';
+import 'package:genkid/widgets/main_button.dart';
 import 'package:sizer/sizer.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -99,7 +100,7 @@ class _HtmlWriteCodeState extends State<HtmlWriteCode> {
                   height: 2.h,
                 ),
                 SizedBox(
-                  height: 50.h,
+                  height: 40.h,
                   child: BlocConsumer<HtmlCubit, HtmlState>(
                     listener: (context, state) {
                       // TODO: implement listener
@@ -117,21 +118,23 @@ class _HtmlWriteCodeState extends State<HtmlWriteCode> {
                     },
                   ),
                 ),
-
-
+                context.read<HtmlCubit>().empty==true?
+                Container()
+                    :
+               Container(
+                 margin: EdgeInsets.symmetric(horizontal: 18.w),
+                 child: MainButton(
+                   color: Colors.white,
+                   onPressed:(){
+                     context.read<PostsCubit>().addPost( userName: context.read<GetUserInformationCubit>().userInformationModel.firstName.toString(),post:context.read<HtmlCubit>().htmlCode.join("\n") );
+                   } ,
+                   title:"Share Code" ,
+                 ),
+               )
               ],
             ),
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: (){
-              if(context.read<HtmlCubit>().htmlCode.isNotEmpty){
-                context.read<PostsCubit>().addPost(userName:context.read<GetUserInformationCubit>().userInformationModel.firstName.toString() , post:context.read<HtmlCubit>().htmlCode.join("\n") );
-                Navigator.pop(context);
-              }
 
-            },
-            child: Text("Share code",textAlign: TextAlign.center,),
-          ),
         );
       },
     );

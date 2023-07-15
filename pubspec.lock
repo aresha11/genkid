@@ -342,6 +342,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  flutter_progress_status:
+    dependency: "direct main"
+    description:
+      name: flutter_progress_status
+      sha256: "68721205fab670afd9143608ea230bb14ee5ad64a182465ca63b7074a80a62ee"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.3"
   flutter_screenutil:
     dependency: transitive
     description:
@@ -632,6 +640,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.2.4"
+  progress_border:
+    dependency: "direct main"
+    description:
+      name: progress_border
+      sha256: c5324fd36aa08d383adb15b1e348284ca3deeeda525c7179de0a77637a2a6001
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0"
   provider:
     dependency: transitive
     description:

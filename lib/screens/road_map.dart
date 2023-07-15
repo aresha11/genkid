@@ -10,6 +10,8 @@ class RoadMap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> courser=["Flutter","Angular","PHP",".Net"];
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -50,10 +52,10 @@ class RoadMap extends StatelessWidget {
                         ],
                       ),
                       Column(
-                        children: const [
+                        children: [
                           Text(
-                            'course name',
-                            style: TextStyle(
+                            courser[index],
+                            style: const TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -98,9 +100,9 @@ class RoadMap extends StatelessWidget {
                         ],
                       ),
                       Column(
-                        children: const [
+                        children:  [
                           Text(
-                            'course name',
+                            courser[index],
                             style: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold),
                           ),

@@ -13,7 +13,6 @@ class HtmlCubit extends Cubit<HtmlState> {
     htmlCode=code;
     empty=false;
     emit(GetCodeSuccess());
-    print(htmlCode);
   }
 
 }

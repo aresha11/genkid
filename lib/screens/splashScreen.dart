@@ -6,6 +6,7 @@ import 'package:genkid/screens/home_layout_screen.dart';
 import 'dart:math' as math;
 import 'dart:async';
 
+import '../config/utility/app_images.dart';
 import 'auth/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -82,6 +83,14 @@ class _SplashScreenState extends State<SplashScreen>
       backgroundColor: const Color(0xffE4ECFB),
       body: Stack(
         children: [
+          Container(
+            width: double.infinity,
+            height: double.infinity,
+            child: Image.asset(
+              AppImages.backGround,
+              fit: BoxFit.cover,
+            ),
+          ),
           Column(
             children: [
               AnimatedContainer(
@@ -93,7 +102,7 @@ class _SplashScreenState extends State<SplashScreen>
                 duration: Duration(milliseconds: 1000),
                 opacity: _textOpacity,
                 child: Text(
-                  'learn with GenKid',
+                  'Learn with GenKid',
                   style: TextStyle(
                     color:AppColors.primaryColorDark,
                     fontWeight: FontWeight.bold,
@@ -115,12 +124,12 @@ class _SplashScreenState extends State<SplashScreen>
                 width: _width / _containerSize,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Colors.transparent,
                   borderRadius: BorderRadius.circular(30),
                 ),
                 // child: Image.asset('assets/images/file_name.png')
                 child: Image.asset(
-                  'images/logoo.jpeg',
+                  'images/last.png',
                 ),
               ),
             ),

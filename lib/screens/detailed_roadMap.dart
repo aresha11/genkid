@@ -26,11 +26,10 @@ class _DetailedRoadMapState extends State<DetailedRoadMap> {
                      onTap: (){
                        showDialog(context: context, builder: (context)=>AlertDialog(
                          content: Container(
-                           height: 100,
-                           width: 200,
+                           height: 50,
+
                            child: Column(
                              children: [
-                               Text('bootstrap'),
                                TextButton(child: Text('show course'),onPressed: (){
                                  launch("https://youtube.com/playlist?list=PLDoPjvoNmBAw24EjNUp_88S1VeaNK8Cts");
 
@@ -43,10 +42,10 @@ class _DetailedRoadMapState extends State<DetailedRoadMap> {
                      child:  Container(
                        alignment: Alignment.center,
                        margin: EdgeInsets.only(
-                           right: MediaQuery.of(context).size.width * 0.01,
+                           right: MediaQuery.of(context).size.width * 0.05,
                            top: MediaQuery.of(context).size.height*0.07),
-                       height: MediaQuery.of(context).size.height * 0.14,
-                       width: MediaQuery.of(context).size.width * 0.25,
+                       height: MediaQuery.of(context).size.height * 0.1,
+                       width: MediaQuery.of(context).size.width * 0.2,
                        decoration: BoxDecoration(
                            color: Colors.indigo,
                            borderRadius: BorderRadius.only(
@@ -66,11 +65,9 @@ class _DetailedRoadMapState extends State<DetailedRoadMap> {
                       onTap: (){
                         showDialog(context: context, builder: (context)=>AlertDialog(
                           content: Container(
-                            height: 200,
-                            width: 200,
+                            height: 50,
                             child: Column(
                               children: [
-                                Text('javaScript'),
                                 TextButton(child: Text('show course'),onPressed: (){
                                   launch("https://youtube.com/playlist?list=PLDoPjvoNmBAw6p0z0Ek0OjPzeXoqlFlCh");
 
@@ -83,10 +80,10 @@ class _DetailedRoadMapState extends State<DetailedRoadMap> {
                       child: Container(
                         alignment: Alignment.center,
                         margin: EdgeInsets.only(
-                            left: MediaQuery.of(context).size.width * 0.05,
-                            top: MediaQuery.of(context).size.height*0.03),
-                        height: MediaQuery.of(context).size.height * 0.15,
-                        width: MediaQuery.of(context).size.width * 0.25,
+                            left: MediaQuery.of(context).size.width * 0.08,
+                            top: MediaQuery.of(context).size.height*0.05),
+                        height: MediaQuery.of(context).size.height * 0.11,
+                        width: MediaQuery.of(context).size.width * 0.21,
                         decoration: BoxDecoration(
                             color: Colors.indigo,
                             borderRadius: BorderRadius.only(
@@ -106,11 +103,9 @@ class _DetailedRoadMapState extends State<DetailedRoadMap> {
                       onTap: (){
                         showDialog(context: context, builder: (context)=>AlertDialog(
                           content: Container(
-                            height: 100,
-                            width: 200,
+                            height: 50,
                             child: Column(
                               children: [
-                                Text('CSS'),
                                 TextButton(child: Text('show course'),onPressed: (){
                                   launch("https://youtube.com/playlist?list=PLDoPjvoNmBAzAeIcXA3_JsmSkPKOs9W-Y");
 
@@ -123,10 +118,10 @@ class _DetailedRoadMapState extends State<DetailedRoadMap> {
                       child: Container(
                         alignment: Alignment.center,
                         margin: EdgeInsets.only(
-                            right: MediaQuery.of(context).size.width * 0.02,
-                            top: MediaQuery.of(context).size.height*0.03),
-                        height: MediaQuery.of(context).size.height * 0.15,
-                        width: MediaQuery.of(context).size.width * 0.25,
+                            right: MediaQuery.of(context).size.width * 0.07,
+                            top: MediaQuery.of(context).size.height*0.06),
+                        height: MediaQuery.of(context).size.height * 0.12,
+                        width: MediaQuery.of(context).size.width * 0.22,
                         decoration: BoxDecoration(
                             color: Colors.indigo,
                             borderRadius: BorderRadius.only(
@@ -146,11 +141,11 @@ class _DetailedRoadMapState extends State<DetailedRoadMap> {
                       onTap: (){
                         showDialog(context: context, builder: (context)=>AlertDialog(
                           content: Container(
-                            height: 100,
-                            width: 200,
+                            height: 50,
+
                             child: Column(
                               children: [
-                                Text('html'),
+
                                 TextButton(child: Text('show course'),onPressed: (){
                                   launch("https://youtube.com/playlist?list=PLDoPjvoNmBAwClZ1PDcjWilxp9YERUbNt");
 
@@ -163,17 +158,17 @@ class _DetailedRoadMapState extends State<DetailedRoadMap> {
                       child: Container(
                         alignment: Alignment.center,
                         margin: EdgeInsets.only(
-                            left: MediaQuery.of(context).size.width * 0.20,
-                            top: MediaQuery.of(context).size.height*0.03),
-                        height: MediaQuery.of(context).size.height * 0.15,
-                        width: MediaQuery.of(context).size.width * 0.25,
+                            left: MediaQuery.of(context).size.width * 0.32,
+                            top: MediaQuery.of(context).size.height*0.13),
+                        height: MediaQuery.of(context).size.height * 0.13,
+                        width: MediaQuery.of(context).size.width * 0.23,
                         decoration: BoxDecoration(
                             color: Colors.indigo,
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(25),
                                 topRight: Radius.circular(25),
                                 bottomLeft: Radius.circular(25))),
-                        child: Text('step 1',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25,color: Colors.white),),
+                        child: const Text('step 1',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25,color: Colors.white),),
                       ),
                     ),
                   ],

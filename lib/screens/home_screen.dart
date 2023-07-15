@@ -3,14 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:genkid/cubit/auth/get_user_information_cubit/get_user_information_cubit.dart';
+import 'package:genkid/cubit/auth/login_cubit/login_cubit.dart';
 import 'package:genkid/screens/home_layout_screen.dart';
 import 'package:genkid/screens/settings_screens/faq.dart';
 import 'package:genkid/screens/settings_screens/html_editor/html_write.dart';
+import 'package:genkid/screens/settings_screens/privacy_screen.dart';
 import 'package:genkid/screens/settings_screens/rate_screen.dart';
 import 'package:genkid/screens/settings_screens/support_us.dart';
 import '../config/data/local/shared_preference.dart';
 import '../config/utility/app_images.dart';
 import '../config/utility/routes.dart';
+import '../cubit/posts_cubit/posts_cubit.dart';
 import '../widgets/home_container.dart';
 import 'package:sizer/sizer.dart';
 class HomeScreen extends StatelessWidget {
@@ -36,9 +39,10 @@ class HomeScreen extends StatelessWidget {
       ),
       CustomMenuItem(
         callback: () {
+
+
           Navigator.push(context, MaterialPageRoute(builder: (context) => const HtmlWriteCode()));
         },
-
         title: 'Html Test',
         leadingIcon: Icons.html,
         iconSize: 22,
@@ -46,22 +50,24 @@ class HomeScreen extends StatelessWidget {
       ),      CustomMenuItem(
         callback: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) => const RateScreen()));
+
         },
 
         title: 'Rate',
         leadingIcon: Icons.star_rate,
         iconSize: 22,
         titleSize: 12.sp,
-      ),      CustomMenuItem(
-        callback: () {
-          // Navigator.push(context, MaterialPageRoute(builder: (context) => const HtmlWriteCode()));
-        },
-
-        title: 'language',
-        leadingIcon: Icons.language,
-        iconSize: 22,
-        titleSize: 12.sp,
       ),
+      // CustomMenuItem(
+      //   callback: () {
+      //     // Navigator.push(context, MaterialPageRoute(builder: (context) => const HtmlWriteCode()));
+      //   },
+      //
+      //   title: 'language',
+      //   leadingIcon: Icons.language,
+      //   iconSize: 22,
+      //   titleSize: 11.sp,
+      // ),
       CustomMenuItem(
         callback: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) => const FAQ()));
@@ -84,10 +90,10 @@ class HomeScreen extends StatelessWidget {
       ),
       CustomMenuItem(
         callback: () {
-          // Navigator.push(context, MaterialPageRoute(builder: (context) => const HtmlWriteCode()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) =>  Privacy()));
         },
 
-        title: 'privacy',
+        title: 'Privacy',
         leadingIcon: Icons.privacy_tip,
         iconSize: 22,
         titleSize: 12.sp,
@@ -146,14 +152,25 @@ class HomeScreen extends StatelessWidget {
 
     ];
 
-    return  CustomDrawer(
+    return  BlocConsumer<GetUserInformationCubit, GetUserInformationState>(
+  listener: (context, state) {
+    // TODO: implement listener
+  },
+  builder: (context, state) {
+    return CustomDrawer(
         menuItemsList: menuItemsList,
 
-        appBarTitle:  Text(
-          'Hi, ${context.read<GetUserInformationCubit>().userInformationModel.firstName}👋',
+        appBarTitle:  
+        Text(state is LoadingUserInfoState?
+                 "Hi ...... 👋"
+                :
+        context.read<GetUserInformationCubit>().userInformationModel.firstName.toString()=="null"?
+        "Hi ...... 👋"
+        :
+          'Hi, ${context.read<GetUserInformationCubit>().userInformationModel.firstName} 👋',
           style: TextStyle(fontSize: 13.sp,fontWeight: FontWeight.w400),
         ),
-        appBarActions: [],
+        appBarActions: const [],
         menuIcon: Icon(Icons.menu),
       homeWidget: Stack(
         children: [
@@ -188,5 +205,7 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
     );
+  },
+);
   }
 }

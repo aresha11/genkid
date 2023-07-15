@@ -73,9 +73,6 @@ class QuizsCubit extends Cubit<QuizsState> {
 
 
   void getQuestionsBySubgroupId({required String subgroupId}) async {
-    print( SharedPreference.get(key: "htmlQuizId"));
-    print( SharedPreference.get(key: "scratchQuizId"));
-    print(SharedPreference.get(key: "quizType"));
     //data.clear();
     emit(LoadingQuestionsState());
     await dioHelper.getData(

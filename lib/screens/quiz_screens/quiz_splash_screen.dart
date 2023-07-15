@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:genkid/config/utility/app_images.dart';
 import 'package:genkid/config/utility/routes.dart';
+import 'package:genkid/screens/quiz_screens/question_screen.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../cubit/Quizs_cubit/quizs_cubit.dart';
@@ -53,7 +54,8 @@ class _QuizSplashScreenState extends State<QuizSplashScreen> {
                     icon: const Icon(Icons.arrow_forward_ios_outlined),
                     onPressed: () {
 
-                      Navigator.pushReplacementNamed(context, AppRoutes.questionScreenRoute);
+                      // Navigator.pushReplacementNamed(context, AppRoutes.questionScreenRoute);
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => QuestionScreen(),));
                     },
 
             ),

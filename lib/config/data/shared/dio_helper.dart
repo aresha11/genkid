@@ -84,6 +84,31 @@ class DioHelper {
       rethrow;
     }
   }
+  Future<Response> post({
+    required String url,
+    required dynamic data,
+    String? token,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    try {
+      // dio.options.headers = {
+      //   //'Content-Type': 'application/json; char=UTF-8',
+      // };
+      dio.options.queryParameters=data;
+       Response response = await dio.post(
+       url,
+        queryParameters: data,
+        data: data,
+        onSendProgress: onSendProgress,
+        onReceiveProgress: onReceiveProgress,
+      );
+      return response;
+    } catch (e) {
+      print("object");
+      rethrow;
+    }
+  }
 
   //This Function That's Used to Update Some Date based on URL(End Points) and Send what's you need to Update as Map.
    Future<Response> putData({

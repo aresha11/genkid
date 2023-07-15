@@ -4,7 +4,7 @@ part of 'get_user_information_cubit.dart';
 abstract class GetUserInformationState {}
 
 class GetUserInformationInitial extends GetUserInformationState {}
-class LoadingDataState extends GetUserInformationState {}
+class LoadingUserInfoState extends GetUserInformationState {}
 class GetDataSuccessState extends GetUserInformationState {
 
 }

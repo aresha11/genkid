@@ -12,7 +12,13 @@ class Post extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
   return Container(
-    padding: EdgeInsets.all(20),
+
+    padding: const EdgeInsets.all(20),
+    margin: const EdgeInsets.symmetric(horizontal: 10),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(10)
+    ),
     width: double.infinity,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,33 +36,24 @@ class Post extends StatelessWidget {
             SizedBox(
               width: 1.w,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "${context.read<PostsCubit>().postsModel.data[index].userName}",
-                  style: TextStyle(
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const Text(
-                  "16h .",
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-              ],
+            Text(
+              "${context.read<PostsCubit>().postsModel.data[index].userName}",
+              style: TextStyle(
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ],
         ),
         SizedBox(
           height: 1.h,
         ),
-        Text(
-          '${context.read<PostsCubit>().postsModel.data[index].post}',
-          style: TextStyle(fontSize: 8.sp),
+        Padding(
+          padding: EdgeInsets.only(left: 8.w),
+          child: Text(
+            '${context.read<PostsCubit>().postsModel.data[index].post}',
+            style: TextStyle(fontSize: 9.sp),
+          ),
         ),
         SizedBox(
           height: 10,
@@ -74,7 +71,6 @@ class Post extends StatelessWidget {
               readOnly: false,
             ),
             const Expanded(child: SizedBox()),
-            TextButton(onPressed: (){}, child: const Text('share',style: TextStyle(fontSize: 22,fontWeight:FontWeight.w400,color: Colors.black),),),
           ],),
         const Divider(color: Colors.black,),
 

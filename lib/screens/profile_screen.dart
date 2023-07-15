@@ -24,16 +24,6 @@ class ProfileScreen extends StatelessWidget {
                   image: AssetImage('images/bg.jpeg'), fit: BoxFit.cover)),
           child: Stack(
             children: [
-              // Positioned(
-              //     top: 3.h,
-              //     right: 0,
-              //     child: IconButton(
-              //       icon: Icon(Icons.exit_to_app),
-              //       onPressed: () {
-              //         SharedPreference.put(key: "login", value: "false");
-              //         Navigator.pushNamed(context, AppRoutes.splashScreenRoute);
-              //       },
-              //     )),
               Positioned(
                 top: 4.h,
                 left: 0,
@@ -44,19 +34,19 @@ class ProfileScreen extends StatelessWidget {
                   height: 45.h,
                 ),
               ),
-              Positioned(
-                top: 40.h,
-                right: 3.w,
-                child: CircleAvatar(
-                  backgroundColor: Colors.white,
-                  radius: 7.w,
-                  child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.camera_alt,
-                      )),
-                ),
-              ),
+              // Positioned(
+              //   top: 40.h,
+              //   right: 3.w,
+              //   child: CircleAvatar(
+              //     backgroundColor: Colors.white,
+              //     radius: 7.w,
+              //     child: IconButton(
+              //         onPressed: () {},
+              //         icon: Icon(
+              //           Icons.camera_alt,
+              //         )),
+              //   ),
+              // ),
               Positioned(
                   top: 40.h,
                   left: 0,
@@ -69,47 +59,49 @@ class ProfileScreen extends StatelessWidget {
                       backgroundImage: AssetImage(AppImages.loginPicture),
                     ),
                   )),
-              Positioned(
-                top: 49.h,
-                right: 40.w,
-                child: CircleAvatar(
-                  backgroundColor: Colors.white,
-                  radius: 5.w,
-                  child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.camera_alt,
-                      )),
-                ),
-              ),
+              // Positioned(
+              //   top: 49.h,
+              //   right: 40.w,
+              //   child: CircleAvatar(
+              //     backgroundColor: Colors.white,
+              //     radius: 5.w,
+              //     child: IconButton(
+              //         onPressed: () {},
+              //         icon: Icon(
+              //           Icons.camera_alt,
+              //         )),
+              //   ),
+              // ),
               Positioned(
                   top: 57.h,
                   left: 0,
                   right: 0,
                   child: Text(
-                    context
-                        .read<GetUserInformationCubit>()
-                        .userInformationModel
-                        .firstName
-                        .toString(),
+                    state is LoadingUserInfoState?
+                    ""
+                        :
+                    context.read<GetUserInformationCubit>().userInformationModel.firstName.toString()=="null"?
+                    ""
+                        :
+                    ' ${context.read<GetUserInformationCubit>().userInformationModel.firstName} ',
                     style: TextStyle(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
                     ),
                     textAlign: TextAlign.center,
                   )),
-              Positioned(
-                  top: 62.h,
-                  left: 0,
-                  right: 0,
-                  child: Text(
-                    "Bio",
-                    style: TextStyle(
-                      fontSize: 8.sp,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    textAlign: TextAlign.center,
-                  )),
+              // Positioned(
+              //     top: 62.h,
+              //     left: 0,
+              //     right: 0,
+              //     child: Text(
+              //       "Bio",
+              //       style: TextStyle(
+              //         fontSize: 8.sp,
+              //         fontWeight: FontWeight.w500,
+              //       ),
+              //       textAlign: TextAlign.center,
+              //     )),
               Positioned(
                   top: 71.h,
                   child: Container(

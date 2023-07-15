@@ -76,13 +76,18 @@ decoration: const BoxDecoration(
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: Colors.cyan,
+                          gradient: const LinearGradient(
+                              colors: [
+                                Color(0xff7F5BFF),
+                                Color(0xff4624C2),
+                              ]
+                          ),
                           borderRadius: BorderRadius.circular(25),
                           border: Border.all(color: Colors.black)
                       ),
                       height: 80,
-                      width: 150,
-                      child: const Text('back home',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold,fontSize: 18)),
+                      width: 120,
+                      child: const Text('Home',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold,fontSize: 18)),
                     ),
                   ),
                   InkWell(
@@ -94,13 +99,18 @@ decoration: const BoxDecoration(
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: Colors.cyan,
+                          gradient: const LinearGradient(
+                              colors: [
+                                Color(0xff7F5BFF),
+                                Color(0xff4624C2),
+                              ]
+                          ),
                           borderRadius: BorderRadius.circular(25),
                           border: Border.all(color: Colors.black)
                       ),
                       height: 80,
-                      width: 150,
-                      child: Text('Go to next video',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold,fontSize: 18)),
+                      width: 120,
+                      child: const Text('Go next video',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold,fontSize: 18)),
                     ),
                   ),
 
