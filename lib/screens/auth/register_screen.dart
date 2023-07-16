@@ -116,7 +116,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   onchange: (v) {},
                                   onEditingComplete: (v) {},
                                   controller: fullNameController,
-                                  prefixIcon: Icons.calendar_month,
+                                  prefixIcon: Icons.person,
                                   hint: AppStrings.fullName,
                                 ),
                                 SizedBox(
@@ -152,7 +152,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   onchange: (v) {},
                                   onEditingComplete: (v) {},
                                   controller: retypeEmailController,
-                                  prefixIcon: Icons.person,
+                                  prefixIcon: Icons.email,
                                   hint: AppStrings.retypeEmail,
                                 ),
                                 SizedBox(
@@ -200,7 +200,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                                 MainButton(
                                   title: AppStrings.createAccount,
-                                  color: AppColors.primaryColorDark,
+                                  color: Colors.white,
                                   onPressed: () {
                                     if(formKey.currentState!.validate()){
                                       context.read<RegisterCubit>().register(

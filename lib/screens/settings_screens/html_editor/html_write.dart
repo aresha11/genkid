@@ -127,6 +127,7 @@ class _HtmlWriteCodeState extends State<HtmlWriteCode> {
                    color: Colors.white,
                    onPressed:(){
                      context.read<PostsCubit>().addPost( userName: context.read<GetUserInformationCubit>().userInformationModel.firstName.toString(),post:context.read<HtmlCubit>().htmlCode.join("\n") );
+                     Navigator.pop(context);
                    } ,
                    title:"Share Code" ,
                  ),

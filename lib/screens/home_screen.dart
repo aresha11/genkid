@@ -43,7 +43,7 @@ class HomeScreen extends StatelessWidget {
 
           Navigator.push(context, MaterialPageRoute(builder: (context) => const HtmlWriteCode()));
         },
-        title: 'Html Test',
+        title: 'Code Editor',
         leadingIcon: Icons.html,
         iconSize: 22,
         titleSize: 12.sp,

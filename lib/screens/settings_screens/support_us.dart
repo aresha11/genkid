@@ -91,7 +91,7 @@ class _SupportState extends State<Support> {
                     },
                     onEditingComplete: (v){},
                   ),
-                  SizedBox(height: 5.h,),
+                  SizedBox(height: 45.h,),
                   ElevatedButton(
                     style: ButtonStyle(
                       padding: MaterialStatePropertyAll(EdgeInsets.symmetric(horizontal: 12.w)),

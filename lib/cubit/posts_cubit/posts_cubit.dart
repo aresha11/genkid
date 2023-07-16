@@ -89,7 +89,7 @@ class PostsCubit extends Cubit<PostsState> {
     http.Response response = await http
         .post(Uri.parse(url),
       body: {
-        "userName":"mohamed fawzy",
+        "userName":userName,
         "post":post ,
       },)
         .then(
